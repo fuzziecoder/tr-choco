@@ -1,0 +1,363 @@
+/* ============================================================
+   RESPONSIVE DESIGN & MEDIA QUERIES (1440px -> 360px)
+   ============================================================ */
+
+/* Large Tablets & Small Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+  .hero-card {
+    padding: 36px 36px;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: 42px;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 12px;
+  }
+
+  .card-wide-sage {
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .wide-heading {
+    font-size: 24px;
+  }
+
+  .accordion-track {
+    height: 380px;
+  }
+}
+
+/* Tablets (<= 768px) */
+@media (max-width: 768px) {
+  body {
+    padding: 12px 8px;
+  }
+
+  .page-shell {
+    border-radius: 24px;
+  }
+
+  .site-header {
+    padding: 16px 20px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .hero-section {
+    padding: 0 16px 20px 16px;
+  }
+
+  .hero-card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    text-align: left;
+    gap: 28px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .hero-artwork-canvas {
+    max-width: 100%;
+  }
+
+  .hero-main-image {
+    height: 280px;
+  }
+
+  /* Bento Deliberate Reflow for Mobile/Tablet */
+  .bento-section {
+    padding: 0 16px 36px 16px;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .bento-col {
+    gap: 14px;
+  }
+
+  .card-tall {
+    height: 240px;
+  }
+
+  .card-square {
+    height: 180px;
+  }
+
+  .card-editorial {
+    height: auto;
+    min-height: 160px;
+  }
+
+  .card-landscape {
+    height: 260px;
+  }
+
+  .card-wide-sage {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+
+  .wide-image-side {
+    height: 180px;
+  }
+
+  .bento-bottom-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Accordion switches to vertical stacked panels on mobile */
+  .collections-section {
+    padding: 36px 16px;
+  }
+
+  .accordion-track {
+    flex-direction: column;
+    height: auto;
+    gap: 14px;
+  }
+
+  .accordion-panel {
+    height: 180px;
+    flex: none !important;
+  }
+
+  .accordion-panel.is-active {
+    height: 240px;
+  }
+
+  .accordion-action-row {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Scroll Stack: Normal flow on mobile */
+  .story-scroll-section {
+    padding: 36px 16px;
+  }
+
+  .scroll-stack-container {
+    min-height: auto;
+  }
+
+  .stack-card {
+    position: static;
+    margin-bottom: 16px;
+    padding: 28px 24px;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .stack-title {
+    font-size: 24px;
+  }
+
+  /* Discovery 3D Sphere on tablet/mobile */
+  .discovery-section {
+    padding: 36px 16px;
+  }
+
+  .sphere-stage {
+    height: 320px;
+  }
+
+  .sphere-rotor {
+    width: 180px;
+    height: 220px;
+  }
+
+  .sphere-tile {
+    width: 180px;
+    height: 210px;
+    padding: 16px;
+  }
+
+  .active-panel-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  /* Catalogue Section Mobile */
+  .catalogue-section {
+    padding: 36px 16px;
+  }
+
+  .catalogue-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .clear-filters-btn {
+    justify-content: center;
+  }
+
+  .category-filter-group {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-tab {
+    flex-shrink: 0;
+  }
+
+  .secondary-filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .results-count-tag {
+    margin-left: 0;
+  }
+
+  .catalogue-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 14px;
+  }
+
+  .card-visual-slot {
+    height: 130px;
+  }
+
+  /* Dialog Mobile */
+  .product-dialog-panel {
+    border-radius: 20px;
+    max-height: 94vh;
+  }
+
+  .dialog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dialog-artwork-col {
+    padding: 24px 20px;
+  }
+
+  .dialog-details-col {
+    padding: 0 20px 24px 20px;
+  }
+
+  /* Footer Mobile */
+  .site-footer {
+    padding: 36px 20px 24px 20px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-back-to-top {
+    justify-content: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+/* Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+
+  .page-shell {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .hero-card {
+    border-radius: 20px;
+    padding: 28px 18px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-group .specular-cta {
+    width: 100%;
+  }
+
+  .catalogue-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .finds-grid,
+  .cafe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visit-card {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .visit-title {
+    font-size: 26px;
+  }
+}
+
+/* Narrowest Mobile Screen (360px) */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .bento-card {
+    border-radius: 18px;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .floating-accent {
+    animation: none !important;
+  }
+
+  .stack-card {
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
