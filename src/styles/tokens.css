@@ -24,10 +24,10 @@
   --butter-cream-light: #fff9e6;
 
   /* Shell & Backdrop */
-  --outer-bg: radial-gradient(circle at 50% 15%, #42262e 0%, #2b171c 48%, #1a0e12 100%);
+  --outer-bg: #fffefa;
   --outer-glow: rgba(239, 186, 202, 0.15);
   --shell-bg: #fffefa;
-  --shell-border: rgba(70, 49, 45, 0.08);
+  --shell-border: transparent;
 
   /* Typography */
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;

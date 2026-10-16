@@ -15,20 +15,18 @@ html {
   scroll-behavior: smooth;
   font-family: var(--font-sans);
   color: var(--cocoa-text);
-  background-color: #231318;
+  background-color: var(--warm-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   min-height: 100vh;
-  background: var(--outer-bg);
-  background-attachment: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 32px 16px;
+  background-color: var(--warm-white);
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
+  width: 100%;
 }
 
 a {
@@ -71,18 +69,15 @@ img {
 }
 
 /* ============================================================
-   OUTER PAGE SHELL (Screenshot Exact: Warm-White Rounded Container)
+   OUTER PAGE SHELL (Full Width & Responsive to All Ends)
    ============================================================ */
 .page-shell {
   width: 100%;
-  max-width: 1140px;
-  background-color: var(--shell-bg);
-  border-radius: var(--radius-shell);
-  box-shadow: var(--shadow-shell);
-  border: 1px solid var(--shell-border);
+  min-height: 100vh;
+  background-color: var(--warm-white);
   position: relative;
-  overflow: hidden;
-  margin: 0 auto;
+  overflow-x: hidden;
+  margin: 0;
 }
 
 /* ============================================================
@@ -182,11 +177,12 @@ img {
    HEADER COMPONENT
    ============================================================ */
 .site-header {
-  padding: 22px 32px;
+  padding: 20px clamp(24px, 4vw, 64px);
   background-color: transparent;
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
   transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -200,6 +196,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1560px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Brand Script Logo */
@@ -212,7 +211,7 @@ img {
 
 .brand-script {
   font-family: var(--font-script);
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 700;
   color: var(--dark-cocoa);
   letter-spacing: -0.01em;
@@ -234,12 +233,12 @@ img {
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
   list-style: none;
 }
 
 .nav-link {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--cocoa-text);
   padding: 6px 4px;
@@ -324,20 +323,23 @@ img {
    HERO SECTION (Screenshot Exact Composition & Gradient)
    ============================================================ */
 .hero-section {
-  padding: 0 28px 24px 28px;
+  padding: 0 clamp(20px, 3.5vw, 64px) 28px clamp(20px, 3.5vw, 64px);
+  width: 100%;
 }
 
 .hero-card {
+  max-width: 1560px;
+  margin: 0 auto;
   background: var(--blush-gradient);
   border-radius: var(--radius-hero);
-  padding: 48px 48px;
+  padding: clamp(36px, 4vw, 56px) clamp(36px, 4.5vw, 64px);
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 36px;
+  gap: clamp(32px, 4vw, 56px);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 28px rgba(239, 186, 202, 0.28);
+  box-shadow: 0 8px 30px rgba(239, 186, 202, 0.3);
 }
 
 .hero-text-content {
@@ -372,7 +374,7 @@ img {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: 52px;
+  font-size: clamp(38px, 4vw, 56px);
   line-height: 1.08;
   color: var(--dark-cocoa);
   font-weight: 700;
@@ -392,10 +394,10 @@ img {
 }
 
 .hero-description {
-  font-size: 15.5px;
+  font-size: clamp(14.5px, 1.2vw, 16px);
   line-height: 1.55;
   color: var(--cocoa-muted);
-  max-width: 420px;
+  max-width: 440px;
 }
 
 .hero-cta-group {
@@ -411,12 +413,13 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .hero-artwork-canvas {
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: 540px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -424,7 +427,7 @@ img {
 
 .hero-main-image-container {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(70, 49, 45, 0.12);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -432,7 +435,7 @@ img {
 
 .hero-main-image {
   width: 100%;
-  height: 380px;
+  height: clamp(340px, 30vw, 460px);
   object-fit: cover;
 }
 
@@ -505,19 +508,22 @@ img {
    BENTO SHOWCASE (Asymmetric Composition from Screenshot)
    ============================================================ */
 .bento-section {
-  padding: 12px 28px 48px 28px;
+  padding: 12px clamp(20px, 3.5vw, 64px) 56px clamp(20px, 3.5vw, 64px);
+  max-width: 1560px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .bento-grid {
   display: grid;
   grid-template-columns: 1fr 1.35fr 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
 .bento-col {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Bento Cards Common */
@@ -545,21 +551,21 @@ img {
 
 /* Bento Card Shapes */
 .card-tall {
-  height: 290px;
+  height: clamp(300px, 24vw, 380px);
 }
 
 .card-square {
-  height: 210px;
+  height: clamp(210px, 17vw, 260px);
 }
 
 .card-editorial {
-  height: 180px;
-  padding: 24px;
+  min-height: clamp(190px, 15vw, 230px);
+  padding: 28px;
   justify-content: space-between;
 }
 
 .card-landscape {
-  height: 320px;
+  height: clamp(330px, 27vw, 410px);
 }
 
 /* Bento Color Variants (Exact to reference) */
