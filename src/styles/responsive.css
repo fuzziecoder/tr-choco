@@ -30,13 +30,84 @@
   .accordion-track {
     height: 380px;
   }
+
+  .cafe-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
 }
 
 /* Medium Desktops & Smaller Laptops (992px to 1280px) */
 @media (max-width: 1280px) and (min-width: 992px) {
+  .shop-by-category-grid {
+    gap: 12px;
+  }
+
+  .category-showcase-card {
+    height: 198px;
+    padding: 8px 8px 12px 8px;
+  }
+
+  .category-card-visual {
+    height: 104px;
+  }
+
+  .category-card-title {
+    font-size: 14px;
+  }
+
+  .category-card-count {
+    font-size: 11.5px;
+  }
+
   .catalogue-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
+  }
+}
+
+/* Tablets & Mobile (<= 991px): Horizontally scrollable row */
+@media (max-width: 991px) {
+  .shop-by-category-grid {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(70, 49, 45, 0.25) transparent;
+  }
+
+  .shop-by-category-grid::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .shop-by-category-grid::-webkit-scrollbar-thumb {
+    background: rgba(70, 49, 45, 0.25);
+    border-radius: 4px;
+  }
+
+  .category-showcase-card {
+    flex: 0 0 135px;
+    width: 135px;
+    height: 188px;
+    scroll-snap-align: start;
+    padding: 8px 8px 12px 8px;
+    grid-column: auto !important;
+  }
+
+  .category-card-visual {
+    height: 94px;
+  }
+
+  .category-card-title {
+    font-size: 13.5px;
+  }
+
+  .category-card-count {
+    font-size: 11.5px;
   }
 }
 
@@ -188,26 +259,30 @@
   }
 
   .craft-stack-stage {
-    max-width: 100%;
-    height: auto;
-    position: static;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    max-width: 520px;
+    width: 100%;
+    height: 380px;
+    position: relative;
+    margin: 16px auto 0;
   }
 
   .craft-card {
-    position: static;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    min-height: 280px;
-    transform: none !important;
-    opacity: 1 !important;
+    height: 100%;
     padding: 24px 20px;
+    box-sizing: border-box;
   }
 
   .craft-card-title {
-    font-size: 24px;
+    font-size: 23px;
+  }
+
+  .craft-card-body {
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   /* Legacy Scroll Stack fallbacks */
@@ -314,6 +389,10 @@
     margin-left: 0;
   }
 
+  .shop-by-category-container {
+    margin-bottom: 22px;
+  }
+
   .catalogue-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
@@ -368,6 +447,62 @@
 
 /* Large Phones & Compact Tablets (<= 600px) */
 @media (max-width: 600px) {
+  .category-showcase-card {
+    flex: 0 0 128px;
+    width: 128px;
+    height: 182px;
+    padding: 7px 7px 10px 7px;
+  }
+
+  .category-card-visual {
+    height: 88px;
+  }
+
+  .category-card-title {
+    font-size: 13px;
+  }
+
+  .category-card-count {
+    font-size: 11px;
+  }
+
+  .shop-by-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .category-header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .active-category-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 20px;
+    gap: 14px;
+  }
+
+  .active-category-banner-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .catalogue-initial-prompt {
+    padding: 32px 18px;
+    margin: 24px auto 12px auto;
+  }
+
+  .initial-prompt-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .initial-prompt-actions .specular-cta {
+    width: 100%;
+  }
+
   .catalogue-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -453,9 +588,17 @@
     animation: none !important;
   }
 
-  .stack-card {
+  .stack-card,
+  .craft-card {
     position: static !important;
     transform: none !important;
     opacity: 1 !important;
+  }
+
+  .craft-stack-stage {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
   }
 }
