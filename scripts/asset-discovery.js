@@ -75,3 +75,19 @@ uncertain.forEach(u => console.log(`   ${u.entry.name} ?-> ${u.candidate} (${u.r
 
 console.log(`\n⏳ Awaiting Photography: ${missing.length} products`);
 console.log('To link an image, place webp/jpg files into public/images/products/ and rerun this script.\n');
+
+// Write updated CSV
+const updatedLines = [header];
+entries.forEach(entry => {
+  const match = matched.find(m => m.entry.slug === entry.slug);
+  if (match) {
+    const ext = path.extname(match.file);
+    updatedLines.push(`${entry.name},${entry.slug},${match.file},/images/products/${match.file},Active Photography`);
+  } else {
+    updatedLines.push(`${entry.name},${entry.slug},${entry.recommended},${entry.assigned},${entry.status}`);
+  }
+});
+
+fs.writeFileSync(checklistPath, updatedLines.join('\n') + '\n', 'utf-8');
+console.log('✅ Updated public/product-image-checklist.csv with active photography matches.\n');
+
