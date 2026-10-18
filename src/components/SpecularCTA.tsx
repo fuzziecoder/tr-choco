@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { scrollToSection } from "../utils/navigation";
 
 export interface SpecularCTAProps {
   children: React.ReactNode;
@@ -53,11 +54,20 @@ export const SpecularCTA: React.FC<SpecularCTAProps> = ({
   const baseClasses = `specular-cta specular-${variant} specular-${size} ${className}`;
 
   if (href) {
+    const isAnchor = href.startsWith("#");
     return (
       <a
         ref={buttonRef as React.RefObject<HTMLAnchorElement>}
         href={href}
-        onClick={onClick}
+        onClick={(e) => {
+          if (isAnchor) {
+            e.preventDefault();
+            scrollToSection(href);
+          }
+          if (onClick) {
+            onClick(e);
+          }
+        }}
         className={baseClasses}
         style={specularStyle}
         onMouseMove={handleMouseMove}

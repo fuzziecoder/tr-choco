@@ -2,10 +2,11 @@ import React from "react";
 import { siteConfig } from "../data/siteConfig";
 import { SpecularCTA } from "./SpecularCTA";
 import { ArrowUp, Compass } from "lucide-react";
+import { scrollToSection } from "../utils/navigation";
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToSection("hero");
   };
 
   return (
@@ -91,7 +92,14 @@ export const Footer: React.FC = () => {
             <ul className="footer-nav-list">
               {siteConfig.navigation.map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="footer-nav-link">
+                  <a
+                    href={item.href}
+                    className="footer-nav-link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.href);
+                    }}
+                  >
                     {item.label}
                   </a>
                 </li>

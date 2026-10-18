@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { products } from "../data/products";
 import { categories } from "../data/categories";
 import { collections } from "../data/collections";
@@ -10,6 +10,7 @@ import type {
 } from "../types/catalogue";
 import { ProductCard } from "./ProductCard";
 import { SpecularCTA } from "./SpecularCTA";
+import { scrollToSection } from "../utils/navigation";
 import {
   Search,
   RotateCcw,
@@ -17,7 +18,6 @@ import {
   Filter,
   X,
   ArrowRight,
-  ArrowLeft,
   CheckCircle2,
   Grid,
 } from "lucide-react";
@@ -112,11 +112,50 @@ const CATEGORY_CARDS: CategoryCardDefinition[] = [
   },
 ];
 
+/**
+ * Responsive preview limit hook based on displayed grid columns:
+ * - Four-column desktop layout (>1280px): 8 products (4 cols * 2 rows)
+ * - Three-column layout (992px - 1280px): 6 products (3 cols * 2 rows)
+ * - Two-column tablet layout (641px - 991px): 4 products (2 cols * 2 rows)
+ * - One-column mobile layout (<=640px): 2 products (1 col * 2 rows)
+ */
+function usePreviewLimit(): number {
+  const [limit, setLimit] = useState<number>(() => {
+    if (typeof window === "undefined") return 8;
+    const w = window.innerWidth;
+    if (w > 1280) return 8;
+    if (w > 991) return 6;
+    if (w > 640) return 4;
+    return 2;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      let next = 8;
+      if (w > 1280) next = 8;
+      else if (w > 991) next = 6;
+      else if (w > 640) next = 4;
+      else next = 2;
+      setLimit(next);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return limit;
+}
+
 export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
   filterState,
   setFilterState,
   onSelectProduct,
 }) => {
+  const [viewMode, setViewMode] = useState<"preview" | "full">("preview");
+  const previewLimit = usePreviewLimit();
+  const previewSectionRef = useRef<HTMLDivElement>(null);
   const productGridRef = useRef<HTMLDivElement>(null);
 
   // Confirmed available sizes from the catalogue
@@ -131,9 +170,19 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
   ];
 
   // Helper to dynamically derive category count from actual products
-  const getCategoryCount = (id: CategoryId | "all"): number => {
-    if (id === "all") return products.length;
+  const getCategoryCount = (id: CategoryId | "all" | "none"): number => {
+    if (id === "all" || id === "none") return products.length;
     return products.filter((p) => p.categoryId === id).length;
+  };
+
+  // Generate category-specific "View All" label from category data
+  const getViewAllButtonLabel = (catId: CategoryId | "all" | "none"): string => {
+    if (catId === "none") return `View All Items (${products.length})`;
+    const count = getCategoryCount(catId);
+    if (catId === "all") return `View All Items (${count})`;
+    const cardDef = CATEGORY_CARDS.find((c) => c.id === catId);
+    const label = cardDef?.name || "Products";
+    return `View All ${label} (${count})`;
   };
 
   // Update filter criteria
@@ -150,13 +199,15 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
     }));
   };
 
-  const handleSelectCategory = (catId: CategoryId | "all") => {
-    // If clicking the currently selected category, toggle back to overview
-    if (filterState.selectedCategory === catId) {
-      updateFilter({ selectedCategory: "none", searchQuery: "", selectedCollection: "all", selectedSize: "all" });
+  const handleSelectCategory = (catId: CategoryId | "all", forceMode?: "preview" | "full") => {
+    // If clicking the currently selected category in preview mode, toggle back to overview
+    if (filterState.selectedCategory === catId && viewMode === "preview" && !forceMode) {
+      handleReturnToCategories();
       return;
     }
 
+    const nextMode = forceMode || "preview";
+    setViewMode(nextMode);
     updateFilter({
       selectedCategory: catId,
       searchQuery: "",
@@ -164,30 +215,43 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
       selectedSize: "all",
     });
 
-    // Smooth scroll down to the product section
+    // Smooth scroll down without changing URL hash
     setTimeout(() => {
-      productGridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 100);
+      if (nextMode === "full") {
+        scrollToSection("full-catalogue-view", { additionalOffset: 16 });
+      } else {
+        scrollToSection("category-preview-section", { additionalOffset: 16 });
+      }
+    }, 60);
+  };
+
+  const handleOpenFullCatalogue = () => {
+    setViewMode("full");
+    setTimeout(() => {
+      scrollToSection("full-catalogue-view", { additionalOffset: 16 });
+    }, 60);
   };
 
   const handleReturnToCategories = () => {
+    setViewMode("preview");
     updateFilter({
       selectedCategory: "none",
       searchQuery: "",
       selectedCollection: "all",
       selectedSize: "all",
     });
-    const catalogueEl = document.querySelector("#catalogue");
-    if (catalogueEl) {
-      catalogueEl.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    scrollToSection("catalogue", { additionalOffset: 16 });
+  };
+
+  const handleSwitchToPreview = () => {
+    setViewMode("preview");
+    scrollToSection("category-preview-section", { additionalOffset: 16 });
   };
 
   const isCategorySelected = filterState.selectedCategory !== "none";
 
-  // Filter products based on search, category, collection, and size
+  // Filter products based on search, category, collection, and size for full catalogue view
   const filteredProducts = useMemo(() => {
-    // If no category has been selected yet, do not display products immediately
     if (filterState.selectedCategory === "none") {
       return [];
     }
@@ -224,22 +288,39 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
     });
   }, [filterState]);
 
+  // Two-row preview products: featured/editorialBadge items first, keeping original catalog order
+  const previewProducts = useMemo(() => {
+    if (filterState.selectedCategory === "none") return [];
+    const categoryItems =
+      filterState.selectedCategory === "all"
+        ? products
+        : products.filter((p) => p.categoryId === filterState.selectedCategory);
+
+    const featured = categoryItems.filter((p) => p.featured || Boolean(p.editorialBadge));
+    const normal = categoryItems.filter((p) => !p.featured && !Boolean(p.editorialBadge));
+    const ordered = [...featured, ...normal];
+
+    // Limit the actual displayed product list to previewLimit (never hide with fixed-height overflow container)
+    return ordered.slice(0, previewLimit);
+  }, [filterState.selectedCategory, previewLimit]);
+
   // Active category display title and details
   const activeCategoryInfo = useMemo(() => {
     if (filterState.selectedCategory === "all") {
       return {
         name: "All Items",
-        description: "Viewing all 75 catalogue listings across chocolates, confections, bakes, and botanicals.",
+        description: "Viewing handcrafted listings across chocolates, confections, bakes, and botanicals.",
         total: products.length,
       };
     }
     if (filterState.selectedCategory === "none") {
       return null;
     }
+    const cardDef = CATEGORY_CARDS.find((c) => c.id === filterState.selectedCategory);
     const cat = categories.find((c) => c.id === filterState.selectedCategory);
     return {
-      name: cat?.label || "Selected Category",
-      description: cat?.description || "",
+      name: cardDef?.name || cat?.label || "Selected Category",
+      description: cardDef?.subtitle || cat?.description || "",
       total: products.filter((p) => p.categoryId === filterState.selectedCategory).length,
     };
   }, [filterState.selectedCategory]);
@@ -262,12 +343,14 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
         </h2>
         <p className="section-description">
           {isCategorySelected
-            ? `Explore our ${filteredProducts.length} listings in ${activeCategoryInfo?.name || "this category"}.`
+            ? viewMode === "preview"
+              ? `Previewing top artisanal selections in ${activeCategoryInfo?.name}. Click "${getViewAllButtonLabel(filterState.selectedCategory)}" below to open the complete vitrine.`
+              : `Explore all ${filteredProducts.length} listings in ${activeCategoryInfo?.name || "this category"}.`
             : `Select a category below to explore our ${products.length} handcrafted listings across nine departments, or choose "All Items" to view the complete collection.`}
         </p>
       </div>
 
-      {/* 2. IMAGE-BASED CATEGORY CARDS (Nine Categories, Two-Column Grid) */}
+      {/* 2. IMAGE-BASED CATEGORY CARDS (Nine Categories Grid) */}
       <div className="shop-by-category-container" aria-label="Category Selection Grid">
         <div className="shop-by-category-header">
           <div className="shop-by-category-title-wrap">
@@ -294,7 +377,7 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
                 filterState.selectedCategory === "all" ? "is-selected-view-all" : ""
               }`}
               onClick={() => handleSelectCategory("all")}
-              aria-label="View all 75 catalogue listings"
+              aria-label="View All Items (75)"
             >
               <span>View All ({products.length})</span>
               <ArrowRight size={14} className="view-all-arrow" aria-hidden="true" />
@@ -318,7 +401,7 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
                 onClick={() => handleSelectCategory(cat.id)}
                 aria-pressed={isSelected}
                 aria-label={`Category ${cat.name}, ${count} products available. ${
-                  isSelected ? "Currently selected." : "Click to view products."
+                  isSelected ? "Currently selected." : "Click to view preview."
                 }`}
               >
                 <div className="category-card-content">
@@ -384,18 +467,87 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
         </div>
       )}
 
-      {/* 4. ACTIVE PRODUCT CATALOGUE: Displayed only after a category is selected */}
-      {isCategorySelected && (
+      {/* 2. TWO-ROW COMPACT PRODUCT PREVIEW WITH CATEGORY-SPECIFIC "VIEW ALL" BUTTON */}
+      {isCategorySelected && viewMode === "preview" && (
         <div
+          id="category-preview-section"
+          ref={previewSectionRef}
+          className="category-preview-section"
+          aria-live="polite"
+        >
+          <div className="preview-header-banner">
+            <div className="preview-header-info">
+              <span className="preview-badge">
+                <Sparkles size={13} />
+                <span>Two-Row Category Preview</span>
+              </span>
+              <h3 className="preview-category-title">{activeCategoryInfo?.name}</h3>
+              <p className="preview-category-desc">
+                {activeCategoryInfo?.description ||
+                  `Previewing main artisanal listings from our ${activeCategoryInfo?.name} department.`}
+              </p>
+            </div>
+
+            <div className="active-category-banner-actions">
+              <button
+                type="button"
+                className="back-to-categories-pill"
+                onClick={handleReturnToCategories}
+                aria-label="Back to Category Selection overview"
+              >
+                <Grid size={15} />
+                <span>All Categories</span>
+              </button>
+
+              <div className="active-count-chip">
+                Showing <strong>{previewProducts.length}</strong> of {activeCategoryInfo?.total}{" "}
+                {activeCategoryInfo?.total === 1 ? "product" : "products"}
+              </div>
+            </div>
+          </div>
+
+          {/* Compact 2-Row Preview Grid (limited to previewProducts.length, max 2 rows) */}
+          <div className="catalogue-grid" aria-label={`${activeCategoryInfo?.name} 2-Row Product Preview`}>
+            {previewProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onSelect={onSelectProduct}
+              />
+            ))}
+          </div>
+
+          {/* Category-Specific View All CTA beneath the preview grid */}
+          <div className="preview-view-all-cta-wrap">
+            <SpecularCTA
+              variant="primary"
+              size="lg"
+              onClick={handleOpenFullCatalogue}
+              ariaLabel={`${getViewAllButtonLabel(filterState.selectedCategory)}. Open complete catalogue vitrine.`}
+            >
+              <span>{getViewAllButtonLabel(filterState.selectedCategory)}</span>
+              <ArrowRight size={16} />
+            </SpecularCTA>
+            <span className="preview-cta-subtext">
+              Explore all {activeCategoryInfo?.total} items in {activeCategoryInfo?.name} with search, collection filters & confirmed sizes
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* 3. COMPLETE CATALOGUE SECTION: Full Vitrine when user clicks "View All" */}
+      {isCategorySelected && viewMode === "full" && (
+        <div
+          id="full-catalogue-view"
           ref={productGridRef}
           className="active-category-results-section"
           aria-live="polite"
         >
-          {/* Active Category Heading & Return Navigation */}
+          {/* Active Category Heading & Navigation */}
           <div className="active-category-banner">
             <div className="active-category-info">
               <div className="active-category-eyebrow">
-                <span>ACTIVE CATEGORY</span>
+                <span>COMPLETE CATEGORY VITRINE</span>
               </div>
               <h3 className="active-category-title">{activeCategoryInfo?.name}</h3>
               {activeCategoryInfo?.description && (
@@ -407,11 +559,21 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
               <button
                 type="button"
                 className="back-to-categories-pill"
+                onClick={handleSwitchToPreview}
+                aria-label="Return to two-row preview for this category"
+              >
+                <Sparkles size={14} />
+                <span>Compact Preview</span>
+              </button>
+
+              <button
+                type="button"
+                className="back-to-categories-pill"
                 onClick={handleReturnToCategories}
                 aria-label="Back to Category Selection overview"
               >
-                <ArrowLeft size={15} />
-                <span>Back to Categories</span>
+                <Grid size={15} />
+                <span>All Categories</span>
               </button>
 
               <div className="active-count-chip">
@@ -462,7 +624,7 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
 
           {/* Collection & Confirmed Size Secondary Filter Row */}
           <div className="secondary-filter-row">
-            {/* Collection Filter (especially relevant for chocolates) */}
+            {/* Collection Filter */}
             <div className="filter-subgroup">
               <span className="filter-label">Collection:</span>
               <select

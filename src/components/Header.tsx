@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { siteConfig } from "../data/siteConfig";
 import { SpecularCTA } from "./SpecularCTA";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { scrollToSection } from "../utils/navigation";
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,17 +18,25 @@ export const Header: React.FC = () => {
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    // Defer scroll slightly to let mobile menu close cleanly
+    setTimeout(() => {
+      scrollToSection(href);
+    }, 10);
   };
 
   return (
     <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
       <div className="header-inner">
         {/* Brand Mark with Authentic TR Emblem */}
-        <a href="#hero" className="brand-logo" aria-label={`${siteConfig.brandName} Home`}>
+        <a
+          href="#hero"
+          className="brand-logo"
+          aria-label={`${siteConfig.brandName} Home`}
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick("#hero");
+          }}
+        >
           <img
             src="/tr-logo.png"
             alt="TR Homemade Chocolates Logo"

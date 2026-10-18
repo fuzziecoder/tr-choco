@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { collections } from "../data/collections";
 import type { CollectionId } from "../types/catalogue";
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import { scrollToSection } from "../utils/navigation";
 
 interface CollectionAccordionProps {
   onSelectCollection: (collectionId: CollectionId) => void;
@@ -33,10 +34,7 @@ export const CollectionAccordion: React.FC<CollectionAccordionProps> = ({
 
   const handleCardClick = (colId: CollectionId) => {
     onSelectCollection(colId);
-    const catEl = document.querySelector("#catalogue");
-    if (catEl) {
-      catEl.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection("catalogue");
   };
 
   return (

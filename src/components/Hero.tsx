@@ -3,6 +3,7 @@ import { siteConfig } from "../data/siteConfig";
 import { heroImages } from "../data/assetManifest";
 import { SpecularCTA } from "./SpecularCTA";
 import { Sparkles, ArrowRight, Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { scrollToSection } from "../utils/navigation";
 
 /**
  * Hero video source setting.
@@ -62,10 +63,7 @@ export const Hero: React.FC = () => {
   };
 
   const scrollTo = (selector: string) => {
-    const el = document.querySelector(selector);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection(selector);
   };
 
   return (

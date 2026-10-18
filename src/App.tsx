@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { products } from "./data/products";
 import type {
   CatalogueProduct,
@@ -17,6 +17,7 @@ import { CafeSection } from "./components/CafeSection";
 import { EverydayFinds } from "./components/EverydayFinds";
 import { Footer } from "./components/Footer";
 import { ProductDetailsDialog } from "./components/ProductDetailsDialog";
+import { scrollToSection, initHashCleaning } from "./utils/navigation";
 
 export function App() {
   const [selectedProduct, setSelectedProduct] = useState<CatalogueProduct | null>(null);
@@ -27,6 +28,10 @@ export function App() {
     selectedCollection: "all",
     selectedSize: "all",
   });
+
+  useEffect(() => {
+    initHashCleaning();
+  }, []);
 
   const handleSelectProductBySlug = (slug: string) => {
     const found = products.find((p) => p.slug === slug);
@@ -42,10 +47,7 @@ export function App() {
       selectedCollection: "all",
       selectedSize: "all",
     });
-    const catalogueEl = document.querySelector("#catalogue");
-    if (catalogueEl) {
-      catalogueEl.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection("catalogue");
   };
 
   const handleFilterCollection = (collectionId: CollectionId) => {
@@ -55,16 +57,20 @@ export function App() {
       selectedCollection: collectionId,
       selectedSize: "all",
     });
-    const catalogueEl = document.querySelector("#catalogue");
-    if (catalogueEl) {
-      catalogueEl.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection("catalogue");
   };
 
   return (
     <>
       {/* Accessible Skip Link */}
-      <a href="#main-content" className="skip-link">
+      <a
+        href="#main-content"
+        className="skip-link"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToSection("main-content");
+        }}
+      >
         Skip to main content
       </a>
 
