@@ -23,7 +23,7 @@ export function App() {
 
   const [filterState, setFilterState] = useState<CatalogueFilterState>({
     searchQuery: "",
-    selectedCategory: "all",
+    selectedCategory: "none",
     selectedCollection: "all",
     selectedSize: "all",
   });

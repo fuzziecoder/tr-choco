@@ -70,7 +70,7 @@ export interface CatalogueProduct {
 
 export interface CatalogueFilterState {
   searchQuery: string;
-  selectedCategory: CategoryId | "all";
+  selectedCategory: CategoryId | "all" | "none";
   selectedCollection: CollectionId | "all";
   selectedSize: string | "all"; // e.g. "250 g", "500 g", "750 g", "1 kg", "100 g", "400 ml"
 }

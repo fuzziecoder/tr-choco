@@ -173,6 +173,118 @@ export const CraftScrollStack: React.FC = () => {
       };
     });
 
+    // Mobile / Tablet Pinned Craft Scroll (Header above, stack pinned below)
+    mm.add("(max-width: 991px)", () => {
+      gsap.set(cards[0], {
+        zIndex: 1,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+      });
+
+      gsap.set(cards[1], {
+        zIndex: 2,
+        y: "105%",
+        scale: 0.96,
+        opacity: 0.8,
+      });
+
+      gsap.set(cards[2], {
+        zIndex: 3,
+        y: "105%",
+        scale: 0.96,
+        opacity: 0.8,
+      });
+
+      const tl = gsap.timeline({
+        onUpdate: () => {
+          const progress = tl.progress();
+          if (progress < 0.35) {
+            setActiveCardIndex(0);
+          } else if (progress < 0.75) {
+            setActiveCardIndex(1);
+          } else {
+            setActiveCardIndex(2);
+          }
+        },
+      });
+
+      // Card 1 rises smoothly over Card 0
+      tl.to(
+        cards[1],
+        {
+          y: "0%",
+          scale: 1,
+          opacity: 1,
+          ease: "power1.inOut",
+          duration: 1,
+        },
+        0
+      ).to(
+        cards[0],
+        {
+          y: -14,
+          scale: 0.95,
+          opacity: 0.65,
+          ease: "power1.inOut",
+          duration: 1,
+        },
+        0
+      );
+
+      // Card 2 rises smoothly over Card 1
+      tl.to(
+        cards[2],
+        {
+          y: "0%",
+          scale: 1,
+          opacity: 1,
+          ease: "power1.inOut",
+          duration: 1,
+        },
+        1
+      )
+        .to(
+          cards[1],
+          {
+            y: -14,
+            scale: 0.95,
+            opacity: 0.65,
+            ease: "power1.inOut",
+            duration: 1,
+          },
+          1
+        )
+        .to(
+          cards[0],
+          {
+            y: -28,
+            scale: 0.9,
+            opacity: 0.35,
+            ease: "power1.inOut",
+            duration: 1,
+          },
+          1
+        );
+
+      const trigger = ScrollTrigger.create({
+        trigger: stackStageRef.current,
+        start: "center center",
+        end: "+=800",
+        pin: true,
+        pinSpacing: true,
+        scrub: 0.6,
+        animation: tl,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      });
+
+      return () => {
+        trigger.kill();
+        tl.kill();
+      };
+    });
+
     return () => mm.revert();
   }, []);
 

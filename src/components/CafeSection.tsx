@@ -19,7 +19,6 @@ export const CafeSection: React.FC<CafeSectionProps> = ({ onSelectProduct }) => 
     "avocado-milkshake",
     "egg-puffs",
     "veg-puffs",
-    "brownie-with-chocolate",
   ];
 
   const cafeItems = cafeSlugs
