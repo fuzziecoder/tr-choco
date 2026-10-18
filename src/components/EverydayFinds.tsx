@@ -55,6 +55,9 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
                 alt="Pure Simmered Desi Ghee & Raw Honey"
                 className="bento-card-img bento-card-img-right"
                 loading="lazy"
+                decoding="async"
+                width={500}
+                height={320}
               />
             </div>
             <div className="bento-card-content">
@@ -81,6 +84,9 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
                 alt="Botanical Oils and Extracts"
                 className="bento-card-img bento-card-img-right"
                 loading="lazy"
+                decoding="async"
+                width={500}
+                height={320}
               />
             </div>
             <div className="bento-card-content">
@@ -107,6 +113,9 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
                 alt="Swasthya Botanical Ritual & Body Care"
                 className="bento-card-img bento-card-img-cover"
                 loading="lazy"
+                decoding="async"
+                width={500}
+                height={660}
               />
               <div className="bento-card-gradient-overlay" />
             </div>
@@ -134,6 +143,9 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
                 alt="Swasthya Aloe Vera Face Gel Cream"
                 className="bento-card-img bento-card-img-right"
                 loading="lazy"
+                decoding="async"
+                width={500}
+                height={320}
               />
             </div>
             <div className="bento-card-content">
@@ -160,6 +172,9 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
                 alt="Luxury Botanical Body and Face Washes"
                 className="bento-card-img bento-card-img-right"
                 loading="lazy"
+                decoding="async"
+                width={500}
+                height={320}
               />
             </div>
             <div className="bento-card-content">

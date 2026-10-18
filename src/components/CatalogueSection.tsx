@@ -107,7 +107,7 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
           Artisanal Chocolate & Vitrine Archive
         </h2>
         <p className="section-description">
-          Browse our 72 catalogue listings by category, collection, or confirmed size variant.
+          Browse our {products.length} catalogue listings by category, collection, or confirmed size variant.
         </p>
       </div>
 

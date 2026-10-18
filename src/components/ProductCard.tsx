@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { CatalogueProduct } from "../types/catalogue";
 import { ArrowUpRight } from "lucide-react";
 
@@ -8,12 +8,16 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) => {
+  const [hasError, setHasError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const bgStyle = {
     backgroundColor: product.palette?.bg || "#FFFBF2",
     borderColor: product.palette?.border || "#EFE7DA",
   };
 
   const hasVariants = product.variants.length > 1;
+  const shouldShowImage = Boolean(product.image && !hasError);
 
   return (
     <article
@@ -32,12 +36,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
     >
       {/* Visual Artwork Slot */}
       <div className="card-visual-slot">
-        {product.image ? (
+        {shouldShowImage ? (
           <img
-            src={product.image}
+            src={product.image!}
             alt={product.name}
-            className="product-card-image"
+            className={`product-card-image ${isLoaded ? "is-loaded" : ""}`}
             loading="lazy"
+            decoding="async"
+            width={400}
+            height={260}
+            onLoad={() => setIsLoaded(true)}
+            onError={() => setHasError(true)}
           />
         ) : (
           <div className="product-card-placeholder" aria-hidden="true">
@@ -67,15 +76,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
         )}
 
         <div className="card-meta-row">
-          {/* Confirmed Sizes */}
+          {/* Confirmed Sizes or Price */}
           {hasVariants ? (
             <div className="card-sizes-pills">
-              {product.variants.map((v) => (
+              {product.variants.slice(0, 3).map((v) => (
                 <span key={v.id} className="size-chip">
                   {v.label}
                 </span>
               ))}
+              {product.variants.length > 3 && (
+                <span className="size-chip size-chip-more">
+                  +{product.variants.length - 3}
+                </span>
+              )}
             </div>
+          ) : product.variants[0]?.sellingPrice ? (
+            <span className="card-price-chip">₹{product.variants[0].sellingPrice}</span>
           ) : product.variants[0]?.label && product.variants[0].label !== "Standard" ? (
             <span className="single-size-chip">{product.variants[0].label}</span>
           ) : (

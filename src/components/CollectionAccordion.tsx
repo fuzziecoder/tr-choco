@@ -107,6 +107,9 @@ export const CollectionAccordion: React.FC<CollectionAccordionProps> = ({
                     alt={item.title}
                     className="accordion-bg-image"
                     loading="lazy"
+                    decoding="async"
+                    width={600}
+                    height={420}
                   />
                   <div className="accordion-overlay" />
                 </div>

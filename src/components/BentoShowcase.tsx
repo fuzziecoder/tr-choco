@@ -37,7 +37,10 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
                 src={heroImages.macaronLavender}
                 alt="Gourmet pink strawberry macaron with creamy vanilla filling"
                 className="bento-image"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
+                width={380}
+                height={260}
               />
             </div>
             <div className="bento-overlay-caption">
@@ -60,7 +63,10 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
                 src={heroImages.cupcakeCherry}
                 alt="Vanilla cupcake with buttercream swirl and glossy red cherry"
                 className="bento-image"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
+                width={380}
+                height={200}
               />
             </div>
             <div className="bento-overlay-caption">

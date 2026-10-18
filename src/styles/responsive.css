@@ -32,14 +32,23 @@
   }
 }
 
-/* Tablets (<= 768px) */
+/* Medium Desktops & Smaller Laptops (992px to 1280px) */
+@media (max-width: 1280px) and (min-width: 992px) {
+  .catalogue-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+}
+
+/* Tablets & Mobile (<= 768px) */
 @media (max-width: 768px) {
   body {
-    padding: 12px 8px;
+    padding: 0;
+    margin: 0;
   }
 
   .page-shell {
-    border-radius: 24px;
+    border-radius: 0;
   }
 
   .site-header {
@@ -58,28 +67,33 @@
     padding: 0 16px 20px 16px;
   }
 
-  .hero-card {
-    grid-template-columns: 1fr;
-    padding: 32px 24px;
-    text-align: left;
-    gap: 28px;
+  .hero-card.hero-video-backed {
+    min-height: 480px;
+    border-radius: 24px;
+    padding: 0;
   }
 
-  .hero-title {
-    font-size: 38px;
-  }
-
-  .hero-artwork-canvas {
+  .hero-content-overlay {
+    padding: clamp(32px, 7vw, 54px) clamp(20px, 5vw, 32px);
     max-width: 100%;
   }
 
-  .hero-main-image {
-    height: 280px;
+  .hero-video-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(22, 14, 12, 0.88) 0%,
+      rgba(22, 14, 12, 0.7) 50%,
+      rgba(22, 14, 12, 0.85) 100%
+    );
   }
 
-  .hero-video-container {
-    min-height: 240px;
-    border-radius: 20px;
+  .hero-title {
+    font-size: clamp(32px, 6vw, 40px);
+  }
+
+  .hero-desc-light {
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   /* Bento Deliberate Reflow for Mobile/Tablet */
@@ -301,8 +315,8 @@
   }
 
   .catalogue-grid {
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 
   .catalogue-product-card {
@@ -349,6 +363,14 @@
     flex-direction: column;
     gap: 8px;
     text-align: center;
+  }
+}
+
+/* Large Phones & Compact Tablets (<= 600px) */
+@media (max-width: 600px) {
+  .catalogue-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 

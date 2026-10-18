@@ -100,6 +100,10 @@ export const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
                 src={activeImage || product.image!}
                 alt={product.name}
                 className="dialog-main-image"
+                loading="eager"
+                decoding="async"
+                width={500}
+                height={380}
               />
             ) : (
               <div className="dialog-placeholder-visual">
@@ -110,6 +114,8 @@ export const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
                     className="dialog-crest-logo"
                     width={48}
                     height={48}
+                    loading="eager"
+                    decoding="async"
                   />
                   <span className="crest-brand">TR HOMEMADE CHOCOLATES</span>
                   <span className="crest-monogram">{product.name.charAt(0)}</span>
