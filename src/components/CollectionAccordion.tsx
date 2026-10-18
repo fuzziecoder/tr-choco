@@ -50,7 +50,7 @@ export const CollectionAccordion: React.FC<CollectionAccordionProps> = ({
           Every mood. Its own chocolate.
         </h2>
         <p className="section-description">
-          Select an atelier collection to explore distinctive cacao notes, delicate inclusions, and curated gift boxes.
+          Select a TR signature collection to explore distinctive cacao notes, delicate inclusions, and curated gift boxes.
         </p>
       </div>
 

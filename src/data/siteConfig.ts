@@ -7,6 +7,12 @@ export interface SiteConfig {
   brandName: string;
   brandTagline: string;
   brandSubline: string;
+  location: string;
+  phone: string;
+  whatsappNumber: string;
+  whatsappLink: string;
+  instagramHandle: string;
+  instagramUrl: string;
   hero: {
     eyebrow: string;
     heading: string;
@@ -55,66 +61,72 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  brandName: "Cocoa Atelier",
-  brandTagline: "A little sweetness. A lot to discover.",
-  brandSubline: "Artisanal Chocolates, Café & Little Delights",
+  brandName: "TR Homemade Chocolates",
+  brandTagline: "Homemade with Love",
+  brandSubline: "Real Ingredients. Pure Love. • Hosur",
+  location: "Hosur, Tamil Nadu",
+  phone: "9363151629",
+  whatsappNumber: "+91 93631 51629",
+  whatsappLink: "https://wa.me/919363151629?text=Hello%20TR%20Homemade%20Chocolates!%20I%20would%20like%20to%20inquire%20about%20ordering.",
+  instagramHandle: "tr__homemade__chocolates_hosur",
+  instagramUrl: "https://www.instagram.com/tr__homemade__chocolates_hosur/",
   hero: {
-    eyebrow: "CHOCOLATES, CAFÉ & LITTLE DELIGHTS",
-    heading: "A little sweetness. A lot to discover.",
+    eyebrow: "HOMEMADE WITH LOVE • HOSUR",
+    heading: "Real Ingredients. Pure Love.",
     description:
-      "Explore chocolate favourites, comforting café moments, and thoughtful everyday finds.",
+      "Handcrafted artisan chocolates made fresh in Hosur, paired with aromatic Nilgiri estate teas, bakery treats, and pure botanical botanicals.",
     primaryCta: "Explore Chocolates",
-    secondaryCta: "Discover the Café"
+    secondaryCta: "Nilgiri Teas & Café"
   },
   navigation: [
     { label: "Home", href: "#hero" },
-    { label: "Collections", href: "#collections" },
-    { label: "Café & Drinks", href: "#cafe" },
+    { label: "Chocolates", href: "#collections" },
+    { label: "Teas & Café", href: "#cafe" },
     { label: "Our Story", href: "#story" },
-    { label: "Visit Us", href: "#visit" }
+    { label: "Order & Visit", href: "#visit" }
   ],
   headerCta: {
-    label: "Explore the Collection",
+    label: "Browse Catalogue",
     href: "#catalogue"
   },
   bento: {
-    eyebrow: "EDITORIAL HIGHLIGHTS",
-    heading: "Crafted with quiet devotion.",
-    subheading: "An artisanal glimpse into our bakery vitrine, handcrafted truffles, and tea room."
+    eyebrow: "HANDCRAFTED DELIGHTS",
+    heading: "Homemade with gentle care & pure love.",
+    subheading: "An artisanal glimpse into our rich chocolate slabs, hill station teas, and freshly crafted personal care."
   },
   collectionsSection: {
     eyebrow: "CURATED SELECTION",
     heading: "Every mood. Its own chocolate.",
     description:
-      "Select a collection to filter our complete catalogue or inspect specific taste profiles."
+      "Select a collection to filter our handcrafted catalogue of 24 signature chocolate families and specialties."
   },
   storySection: {
     eyebrow: "OUR PHILOSOPHY",
-    heading: "Moments made to be savoured.",
+    heading: "From our kitchen in Hosur to your home.",
     description:
-      "A quiet tribute to the craft of sweetness, mindful ingredients, and generous hospitality."
+      "TR Homemade Chocolates was born out of a passion for real cocoa, genuine homemade goodness, and zero compromises on purity."
   },
   discoverySection: {
     eyebrow: "INTERACTIVE EXPLORATION",
-    heading: "A whole world of little delights.",
+    heading: "A world of handmade sweetness.",
     description:
-      "Rotate through our sphere of chocolate creations, bakery specialities, and café favourites."
+      "Rotate through our sphere of chocolate creations, hill station specialty teas, and comforting treats."
   },
   visitSection: {
-    eyebrow: "SHOWCASE & VISIT",
-    heading: "Experience Cocoa Atelier",
+    eyebrow: "ORDER & CONNECT",
+    heading: "Direct from TR Homemade Chocolates, Hosur",
     disclaimer:
-      "This website is an interactive digital showcase. In-person boutique reservations and direct ordering details are coming soon.",
+      "Order your favourite chocolates and teas directly via WhatsApp or Instagram. Fresh batches prepared with love in Hosur.",
     note:
-      "We invite you to browse our full catalogue of chocolate families, café drinks, and specialty pantry goods.",
-    ctaLabel: "Browse Full Catalogue",
-    ctaHref: "#catalogue"
+      "Call or message 9363151629 for custom gifting boxes, party favours, and bulk festive hampers.",
+    ctaLabel: "WhatsApp Order Inquiry",
+    ctaHref: "https://wa.me/919363151629?text=Hello%20TR%20Homemade%20Chocolates!%20I%20would%20like%20to%20order."
   },
   footer: {
     blurb:
-      "Cocoa Atelier is an artisanal confectionery and café concept celebrating pure chocolate craft, quiet bakery rituals, and everyday moments.",
-    copyright: `© ${new Date().getFullYear()} Cocoa Atelier. All rights reserved.`,
+      "TR Homemade Chocolates is a Hosur-based artisanal confectionery bringing you authentic homemade chocolates, estate-fresh Kodai teas, and botanical self-care.",
+    copyright: `© ${new Date().getFullYear()} TR Homemade Chocolates, Hosur. All rights reserved.`,
     disclaimer:
-      "Catalogue details are presented for preview purposes. Selling prices and order availability will be verified prior to store opening."
+      "Product weights and formats presented for ordering preview. WhatsApp us at 9363151629 for current batch availability."
   }
 };

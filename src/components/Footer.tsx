@@ -52,8 +52,39 @@ export const Footer: React.FC = () => {
       <footer className="site-footer">
         <div className="footer-top">
           <div className="footer-brand">
-            <span className="footer-script-logo">{siteConfig.brandName}</span>
+            <div className="footer-brand-header">
+              <img
+                src="/tr-logo.png"
+                alt="TR Homemade Chocolates Logo"
+                className="footer-logo-img"
+                width={84}
+                height={84}
+              />
+              <div>
+                <span className="footer-script-logo">{siteConfig.brandName}</span>
+                <span className="footer-tagline">{siteConfig.brandSubline}</span>
+              </div>
+            </div>
             <p className="footer-blurb">{siteConfig.footer.blurb}</p>
+
+            <div className="footer-contact-pills">
+              <a
+                href={siteConfig.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-contact-pill whatsapp-pill"
+              >
+                <span>WhatsApp: {siteConfig.whatsappNumber}</span>
+              </a>
+              <a
+                href={siteConfig.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-contact-pill instagram-pill"
+              >
+                <span>@{siteConfig.instagramHandle}</span>
+              </a>
+            </div>
           </div>
 
           <nav className="footer-nav" aria-label="Footer Navigation">

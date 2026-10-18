@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import type { CatalogueProduct, ProductVariant } from "../types/catalogue";
 import { SpecularCTA } from "./SpecularCTA";
-import { X, Check, ArrowLeft, Tag, Layers, Scale } from "lucide-react";
+import { X, Check, ArrowLeft, Tag, Layers, Scale, MessageCircle } from "lucide-react";
 
 interface ProductDetailsDialogProps {
   product: CatalogueProduct | null;
@@ -13,13 +13,17 @@ export const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
   onClose,
 }) => {
   const [selectedVariantId, setSelectedVariantId] = useState<string>("");
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  // Initialize selected variant when product opens
+  // Initialize selected variant and image when product opens
   useEffect(() => {
-    if (product && product.variants.length > 0) {
-      setSelectedVariantId(product.variants[0].id);
+    if (product) {
+      setActiveImage(product.image);
+      if (product.variants.length > 0) {
+        setSelectedVariantId(product.variants[0].id);
+      }
     }
   }, [product]);
 
@@ -91,16 +95,23 @@ export const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
               backgroundColor: product.palette?.bg || "#FFFBF2",
             }}
           >
-            {product.image ? (
+            {activeImage || product.image ? (
               <img
-                src={product.image}
+                src={activeImage || product.image!}
                 alt={product.name}
                 className="dialog-main-image"
               />
             ) : (
               <div className="dialog-placeholder-visual">
                 <div className="dialog-placeholder-crest">
-                  <span className="crest-brand">COCOA ATELIER</span>
+                  <img
+                    src="/tr-logo.png"
+                    alt="TR Logo"
+                    className="dialog-crest-logo"
+                    width={48}
+                    height={48}
+                  />
+                  <span className="crest-brand">TR HOMEMADE CHOCOLATES</span>
                   <span className="crest-monogram">{product.name.charAt(0)}</span>
                   <span className="crest-category">{product.categoryId.toUpperCase()}</span>
                 </div>
@@ -111,12 +122,19 @@ export const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
             {product.gallery.length > 0 && (
               <div className="dialog-gallery-strip">
                 {product.gallery.map((imgSrc, i) => (
-                  <img
+                  <button
                     key={i}
-                    src={imgSrc}
-                    alt={`${product.name} view ${i + 1}`}
-                    className="gallery-thumb"
-                  />
+                    type="button"
+                    className={`gallery-thumb-btn ${activeImage === imgSrc ? "is-active" : ""}`}
+                    onClick={() => setActiveImage(imgSrc)}
+                    aria-label={`View ${product.name} photo ${i + 1}`}
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`${product.name} thumbnail ${i + 1}`}
+                      className="gallery-thumb"
+                    />
+                  </button>
                 ))}
               </div>
             )}
@@ -214,13 +232,23 @@ export const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
 
             {/* Dialog Footer Actions */}
             <div className="dialog-footer-actions">
+              <a
+                href={`https://wa.me/919363151629?text=Hello%20TR%20Homemade%20Chocolates!%20I%20am%20interested%20in%20ordering%20${encodeURIComponent(product.name)}%20(${encodeURIComponent(currentVariant.label)})`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="dialog-whatsapp-cta"
+              >
+                <MessageCircle size={16} />
+                <span>Order via WhatsApp</span>
+              </a>
+
               <SpecularCTA
-                variant="primary"
+                variant="secondary"
                 size="md"
                 onClick={onClose}
                 icon={<ArrowLeft size={14} />}
               >
-                Back to Collection
+                Back to Catalogue
               </SpecularCTA>
             </div>
           </div>

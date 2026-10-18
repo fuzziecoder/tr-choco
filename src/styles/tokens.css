@@ -23,16 +23,23 @@
   --butter-cream: #fff3cc;
   --butter-cream-light: #fff9e6;
 
+  --gold: #d4af37;
+  --gold-warm: #c59b27;
+  --gold-light: #fef6d8;
+  --gold-gradient: linear-gradient(135deg, #f7d070 0%, #d4af37 50%, #aa8010 100%);
+
   /* Shell & Backdrop */
   --outer-bg: #fffefa;
   --outer-glow: rgba(239, 186, 202, 0.15);
   --shell-bg: #fffefa;
   --shell-border: transparent;
 
-  /* Typography */
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-script: 'Alex Brush', 'Caveat', cursive;
+  /* Typography — Marenao Modern Elegant Typeface (with Outfit & Urbanist luxury branding fallbacks) */
+  --font-brand: 'Marenao', 'Outfit', 'Urbanist', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Marenao', 'Outfit', 'Urbanist', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Marenao', 'Outfit', 'Urbanist', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Marenao', 'Outfit', 'Urbanist', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-script: 'Marenao', 'Outfit', 'Urbanist', sans-serif;
 
   /* Spacing & Radii */
   --radius-shell: 36px;

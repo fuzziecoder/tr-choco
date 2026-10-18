@@ -25,8 +25,8 @@ export const Hero: React.FC = () => {
           </div>
 
           <h1 id="hero-heading" className="hero-title">
-            <span className="hero-title-top">Artisanal</span>
-            <span className="hero-title-bottom">Cocoa & Bakes</span>
+            <span className="hero-title-top">TR Homemade</span>
+            <span className="hero-title-bottom">Chocolates</span>
           </h1>
 
           <p className="hero-description">{siteConfig.hero.description}</p>
@@ -79,9 +79,13 @@ export const Hero: React.FC = () => {
 
             {/* Subtle Circular Badge */}
             <div className="hero-corner-badge" aria-hidden="true">
-              <span className="badge-ring">
-                <span className="badge-text">ATELIER • CRAFT</span>
-              </span>
+              <img
+                src="/tr-logo.png"
+                alt="TR Emblem"
+                className="hero-badge-logo"
+                width={72}
+                height={72}
+              />
             </div>
           </div>
         </div>

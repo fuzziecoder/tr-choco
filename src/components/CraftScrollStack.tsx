@@ -46,46 +46,100 @@ const storyCards: StoryCard[] = [
 ];
 
 export const CraftScrollStack: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isMobile = window.innerWidth < 768;
+    if (isReducedMotion) return;
 
-    if (isReducedMotion || isMobile) return;
+    const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
+    if (cards.length < 3) return;
 
-    const ctx = gsap.context(() => {
-      cardsRef.current.forEach((card, index) => {
-        if (!card || index === cardsRef.current.length - 1) return;
+    const mm = gsap.matchMedia();
 
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 18%",
-          endTrigger: containerRef.current,
-          end: "bottom 80%",
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            const scale = 1 - progress * 0.05;
-            const opacity = 1 - progress * 0.15;
-            gsap.set(card, {
-              scale: scale,
-              opacity: opacity,
-              transformOrigin: "center top",
-            });
-          },
-        });
+    mm.add("(min-width: 769px)", () => {
+      // Initial positioning: Card 0 in place, Cards 1 & 2 waiting below container
+      gsap.set(cards[0], {
+        zIndex: 1,
+        y: 0,
+        yPercent: 0,
+        scale: 1,
+        opacity: 1,
       });
-    }, containerRef);
 
-    return () => ctx.revert();
+      gsap.set(cards[1], {
+        zIndex: 2,
+        yPercent: 105,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+      });
+
+      gsap.set(cards[2], {
+        zIndex: 3,
+        yPercent: 105,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+      });
+
+      const tl = gsap.timeline();
+
+      // Step 1: Card 1 glides up over Card 0; Card 0 recedes upward creating top tab
+      tl.to(cards[1], {
+        yPercent: 0,
+        y: 0,
+        scale: 1,
+        ease: "power1.inOut",
+        duration: 1,
+      }, 0)
+      .to(cards[0], {
+        y: -20,
+        scale: 0.94,
+        ease: "power1.inOut",
+        duration: 1,
+      }, 0)
+
+      // Step 2: Card 2 glides up over Card 1; Card 1 recedes; Card 0 recedes further
+      .to(cards[2], {
+        yPercent: 0,
+        y: 0,
+        scale: 1,
+        ease: "power1.inOut",
+        duration: 1,
+      }, 1)
+      .to(cards[1], {
+        y: -20,
+        scale: 0.94,
+        ease: "power1.inOut",
+        duration: 1,
+      }, 1)
+      .to(cards[0], {
+        y: -40,
+        scale: 0.88,
+        ease: "power1.inOut",
+        duration: 1,
+      }, 1);
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 72px",
+        end: "+=950",
+        pin: true,
+        pinSpacing: true,
+        scrub: 0.5,
+        animation: tl,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      });
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
-    <section id="story" className="story-scroll-section" aria-labelledby="story-heading">
+    <section id="story" ref={sectionRef} className="story-scroll-section" aria-labelledby="story-heading">
       <div className="section-header">
         <span className="section-eyebrow">
           <Heart size={13} />
@@ -99,7 +153,7 @@ export const CraftScrollStack: React.FC = () => {
         </p>
       </div>
 
-      <div ref={containerRef} className="scroll-stack-container">
+      <div className="scroll-stack-container">
         {storyCards.map((card, idx) => (
           <div
             key={card.id}
@@ -107,10 +161,6 @@ export const CraftScrollStack: React.FC = () => {
               cardsRef.current[idx] = el;
             }}
             className={`stack-card stack-${card.theme}`}
-            style={{
-              top: `calc(15vh + ${idx * 28}px)`,
-              zIndex: idx + 1,
-            }}
           >
             <div className="stack-card-inner">
               <div className="stack-header">

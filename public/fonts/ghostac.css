@@ -1,0 +1,14 @@
+/* ============================================================
+   GHOSTAC DISPLAY TYPEFACE (@font-face)
+   Place Ghostac.otf or Ghostac.ttf in /public/fonts/
+   ============================================================ */
+@font-face {
+  font-family: 'Ghostac';
+  src: url('/fonts/Ghostac.woff2') format('woff2'),
+       url('/fonts/Ghostac.woff') format('woff'),
+       url('/fonts/Ghostac.otf') format('opentype'),
+       url('/fonts/Ghostac.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}

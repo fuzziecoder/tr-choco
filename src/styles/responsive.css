@@ -152,12 +152,18 @@
   }
 
   .scroll-stack-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 0;
     min-height: auto;
   }
 
   .stack-card {
+    grid-column: auto;
+    grid-row: auto;
     position: static;
-    margin-bottom: 16px;
+    margin-bottom: 0;
     padding: 28px 24px;
     transform: none !important;
     opacity: 1 !important;
@@ -233,8 +239,12 @@
     gap: 14px;
   }
 
+  .catalogue-product-card {
+    border-radius: 24px;
+  }
+
   .card-visual-slot {
-    height: 130px;
+    height: 220px;
   }
 
   /* Dialog Mobile */

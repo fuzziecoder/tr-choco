@@ -26,10 +26,19 @@ export const Header: React.FC = () => {
   return (
     <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
       <div className="header-inner">
-        {/* Brand Mark (Script-Style Left) */}
+        {/* Brand Mark with Authentic TR Emblem */}
         <a href="#hero" className="brand-logo" aria-label={`${siteConfig.brandName} Home`}>
-          <span className="brand-script">{siteConfig.brandName}</span>
-          <span className="brand-dot" aria-hidden="true" />
+          <img
+            src="/tr-logo.png"
+            alt="TR Homemade Chocolates Logo"
+            className="brand-logo-img"
+            width={68}
+            height={68}
+          />
+          <div className="brand-text-group">
+            <span className="brand-script">{siteConfig.brandName}</span>
+            <span className="brand-location-badge">HOSUR</span>
+          </div>
         </a>
 
         {/* Desktop Navigation (Understated Centered) */}

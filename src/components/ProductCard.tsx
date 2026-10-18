@@ -43,8 +43,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
           <div className="product-card-placeholder" aria-hidden="true">
             <div className="placeholder-pattern" />
             <div className="placeholder-emblem">
+              <span className="placeholder-tagline">HOMEMADE WITH LOVE</span>
               <span className="emblem-initial">{product.name.charAt(0)}</span>
-              <span className="emblem-sub">ATELIER</span>
+              <span className="emblem-sub">TR • HOSUR</span>
             </div>
           </div>
         )}

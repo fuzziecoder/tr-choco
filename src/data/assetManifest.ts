@@ -83,15 +83,19 @@ export const productImages: Record<string, string | null> = {
   "chocolate-bun": null,
 
   // Tea & Coffee
-  "tea": null,
+  "tea": "/images/products/tea-kodai-special.jpg",
+  "tea-kodai-special": "/images/products/tea-kodai-special.jpg",
+  "tea-masala": "/images/products/tea-masala.jpg",
+  "tea-lemon": "/images/products/tea-lemon.jpg",
+  "tea-cardamom": "/images/products/tea-cardamom.jpg",
   "coffee": null,
-  "herbal-tea-all-varieties": null,
+  "herbal-tea-all-varieties": "/images/products/tea-cardamom.jpg",
   "blue-tea": null,
-  "tea-varieties": null,
+  "tea-varieties": "/images/products/tea-masala.jpg",
   "instant-filter-coffee": null,
   "hot-chocolate-coffee": null,
   "drinking-chocolate": null,
-  "green-tea": null,
+  "green-tea": "/images/products/green-tea.jpg",
 
   // Café Food & Drinks
   "egg-puffs": null,
@@ -103,16 +107,25 @@ export const productImages: Record<string, string | null> = {
   "ghee-400ml": null,
   "honey": null,
 
-  // Personal Care
+  // Personal Care & Botanicals
+  "aloe-vera-gel": "/images/products/aloe-vera-face-gel.jpg",
+  "cold-moisturiser-lotion": "/images/products/cold-moisturiser-lotion.jpg",
+  "avocado-jojoba-lotion": "/images/products/avocado-jojoba-lotion.jpg",
+  "saffron-body-wash": "/images/products/saffron-body-wash.jpg",
+  "lavender-body-wash": "/images/products/lavender-body-wash.jpg",
+  "neem-aloevera-body-wash": "/images/products/neem-aloevera-body-wash.jpg",
+  "avocado-face-wash": "/images/products/avocado-face-wash.jpg",
+  "hibiscus-face-wash": "/images/products/hibiscus-face-wash.jpg",
+  "neem-papaya-face-wash": "/images/products/neem-papaya-face-wash.jpg",
+  "orange-face-wash": "/images/products/orange-face-wash.jpg",
   "vetiver-oil": null,
-  "shampoo": null,
-  "rosewater-multani-mitti-combo": null,
-  "aloe-vera-gel": null,
-  "vitamin-c-oil": null,
-  "vitamin-e-oil": null,
+  "shampoo": "/images/products/neem-aloevera-body-wash.jpg",
+  "rosewater-multani-mitti-combo": "/images/products/hibiscus-face-wash.jpg",
+  "vitamin-c-oil": "/images/products/orange-face-wash.jpg",
+  "vitamin-e-oil": "/images/products/avocado-face-wash.jpg",
   "citronella-oil": null,
   "bath-brush": null,
-  "kasturi-manjal": null,
+  "kasturi-manjal": "/images/products/saffron-body-wash.jpg",
 
   // Other / Requires Confirmation
   "sandalwood-colors": null,
@@ -123,6 +136,30 @@ export const productImages: Record<string, string | null> = {
  * Optional multi-image galleries per product family or slug.
  */
 export const productGalleries: Record<string, string[]> = {
+  "tea": [
+    "/images/products/tea-kodai-special.jpg",
+    "/images/products/tea-masala.jpg",
+    "/images/products/tea-lemon.jpg",
+    "/images/products/tea-cardamom.jpg",
+  ],
+  "tea-varieties": [
+    "/images/products/tea-masala.jpg",
+    "/images/products/tea-kodai-special.jpg",
+    "/images/products/tea-cardamom.jpg",
+    "/images/products/tea-lemon.jpg",
+    "/images/products/green-tea.jpg",
+  ],
+  "green-tea": ["/images/products/green-tea.jpg"],
+  "aloe-vera-gel": ["/images/products/aloe-vera-face-gel.jpg"],
+  "saffron-body-wash": ["/images/products/saffron-body-wash.jpg"],
+  "lavender-body-wash": ["/images/products/lavender-body-wash.jpg"],
+  "neem-aloevera-body-wash": ["/images/products/neem-aloevera-body-wash.jpg"],
+  "cold-moisturiser-lotion": ["/images/products/cold-moisturiser-lotion.jpg"],
+  "avocado-jojoba-lotion": ["/images/products/avocado-jojoba-lotion.jpg"],
+  "avocado-face-wash": ["/images/products/avocado-face-wash.jpg"],
+  "hibiscus-face-wash": ["/images/products/hibiscus-face-wash.jpg"],
+  "neem-papaya-face-wash": ["/images/products/neem-papaya-face-wash.jpg"],
+  "orange-face-wash": ["/images/products/orange-face-wash.jpg"],
   "white-crunchy": [],
   "day-night-basic": [],
   "dark-honey": [],
