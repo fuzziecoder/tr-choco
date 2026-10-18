@@ -192,6 +192,34 @@ img {
   box-shadow: 0 4px 20px rgba(70, 49, 45, 0.04);
 }
 
+/* Melted chocolate top edge blend */
+.header-chocolate-drip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 32px;
+  background-image: url("/images/chocolate-drip.webp");
+  background-repeat: repeat-x;
+  background-position: top center;
+  background-size: auto 32px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.78;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.96) 72%, rgba(0, 0, 0, 0.6) 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.96) 72%, rgba(0, 0, 0, 0.6) 88%, transparent 100%);
+  filter: drop-shadow(0 3px 6px rgba(50, 24, 15, 0.14));
+  transition: opacity var(--transition-fast), height var(--transition-fast);
+}
+
+.site-header.is-scrolled .header-chocolate-drip {
+  opacity: 0.60;
+  height: 26px;
+  background-size: auto 26px;
+  filter: drop-shadow(0 2px 4px rgba(50, 24, 15, 0.09));
+}
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -199,6 +227,8 @@ img {
   max-width: 1560px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 /* Brand Logo & Emblem */
