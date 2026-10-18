@@ -23,6 +23,14 @@ export const collectionImages: Record<string, string> = {
   "flavours-favourites": "/images/collections/flavours-favourites.jpg",
 };
 
+export const findsBentoImages = {
+  pantry: "/images/finds/pantry-ghee-honey.jpg",
+  oils: "/images/finds/botanical-oils.jpg",
+  ritualCenter: "/images/finds/botanical-ritual-center.jpg",
+  aloeJar: "/images/finds/aloe-skincare-jar.jpg",
+  vibrantWash: "/images/finds/vibrant-body-wash.jpg",
+};
+
 /**
  * Product family images. If null, the UI gracefully renders a tasteful
  * pastel placeholder card with the item name, category badge, and neutral botanical illustration.
@@ -104,26 +112,26 @@ export const productImages: Record<string, string | null> = {
   "avocado-milkshake": null,
 
   // Pantry
-  "ghee-400ml": null,
-  "honey": null,
+  "ghee-400ml": "/images/finds/pantry-ghee-honey.jpg",
+  "honey": "/images/finds/pantry-ghee-honey.jpg",
 
   // Personal Care & Botanicals
-  "aloe-vera-gel": "/images/products/aloe-vera-face-gel.jpg",
+  "aloe-vera-gel": "/images/finds/aloe-skincare-jar.jpg",
   "cold-moisturiser-lotion": "/images/products/cold-moisturiser-lotion.jpg",
   "avocado-jojoba-lotion": "/images/products/avocado-jojoba-lotion.jpg",
-  "saffron-body-wash": "/images/products/saffron-body-wash.jpg",
+  "saffron-body-wash": "/images/finds/vibrant-body-wash.jpg",
   "lavender-body-wash": "/images/products/lavender-body-wash.jpg",
   "neem-aloevera-body-wash": "/images/products/neem-aloevera-body-wash.jpg",
   "avocado-face-wash": "/images/products/avocado-face-wash.jpg",
   "hibiscus-face-wash": "/images/products/hibiscus-face-wash.jpg",
   "neem-papaya-face-wash": "/images/products/neem-papaya-face-wash.jpg",
   "orange-face-wash": "/images/products/orange-face-wash.jpg",
-  "vetiver-oil": null,
+  "vetiver-oil": "/images/finds/botanical-oils.jpg",
   "shampoo": "/images/products/neem-aloevera-body-wash.jpg",
   "rosewater-multani-mitti-combo": "/images/products/hibiscus-face-wash.jpg",
-  "vitamin-c-oil": "/images/products/orange-face-wash.jpg",
-  "vitamin-e-oil": "/images/products/avocado-face-wash.jpg",
-  "citronella-oil": null,
+  "vitamin-c-oil": "/images/finds/botanical-oils.jpg",
+  "vitamin-e-oil": "/images/finds/botanical-oils.jpg",
+  "citronella-oil": "/images/finds/botanical-oils.jpg",
   "bath-brush": null,
   "kasturi-manjal": "/images/products/saffron-body-wash.jpg",
 

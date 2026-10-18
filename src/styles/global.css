@@ -1926,14 +1926,237 @@ img {
 }
 
 /* ============================================================
-   EVERYDAY FINDS (Quieter Visual Treatment)
+   EVERYDAY FINDS & BOTANICALS (Editorial Bento Grid Showcase)
    ============================================================ */
 .everyday-finds-section {
-  padding: 44px 24px;
+  padding: 56px 24px 64px;
   background-color: var(--warm-white);
-  border-top: 1px solid rgba(70, 49, 45, 0.05);
+  border-top: 1px solid rgba(70, 49, 45, 0.06);
 }
 
+.finds-bento-container {
+  max-width: 1240px;
+  margin: 32px auto 44px;
+}
+
+.finds-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  grid-template-rows: 270px 270px;
+  gap: 16px;
+}
+
+/* Base Bento Card */
+.bento-find-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-find-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* Background & Image layer */
+.bento-card-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bento-card-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card-img-right {
+  object-fit: cover;
+  object-position: right center;
+}
+
+.bento-card-img-cover {
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.bento-find-card:hover .bento-card-img {
+  transform: scale(1.04);
+}
+
+/* Center card gradient for text legibility */
+.bento-card-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.02) 40%,
+    rgba(0, 0, 0, 0.45) 75%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+  z-index: 2;
+}
+
+/* Card Themes */
+.bento-card-pantry {
+  background-color: #ede9e2;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.bento-card-oils {
+  background-color: #dfc29c;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.bento-card-center {
+  background-color: #e5ded2;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.bento-card-aloe {
+  background-color: #e5dbc9;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.bento-card-wash {
+  background-color: #ba281b;
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Card Content Overlay */
+.bento-card-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 22px 24px;
+  pointer-events: none;
+  max-width: 72%;
+}
+
+.bento-content-tall {
+  max-width: 88%;
+  padding: 26px 28px;
+}
+
+.bento-meta-text {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(40, 28, 26, 0.62);
+  margin-bottom: auto;
+}
+
+.bento-meta-text.light {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Pill Tags */
+.bento-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.bento-pill-tag.dark {
+  background: #181514;
+  color: #ffffff;
+}
+
+.bento-pill-tag.light {
+  background: rgba(255, 255, 255, 0.95);
+  color: #181514;
+  backdrop-filter: blur(4px);
+}
+
+.bento-pill-tag.white {
+  background: #ffffff;
+  color: #ba281b;
+}
+
+/* Card Titles */
+.bento-card-title {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 16.5px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.bento-content-tall .bento-card-title {
+  font-size: 23px;
+  line-height: 1.22;
+}
+
+.bento-card-title.dark-text {
+  color: #1f1b19;
+}
+
+.bento-card-title.light-text {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Browse Divider */
+.finds-browse-divider {
+  max-width: 1240px;
+  margin: 24px auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.finds-browse-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(70, 49, 45, 0.1);
+}
+
+.browse-divider-label {
+  position: relative;
+  background: var(--warm-white);
+  padding: 0 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cocoa-muted);
+}
+
+/* Filter Tab Navigation */
 .finds-tab-row {
   display: flex;
   flex-wrap: wrap;
@@ -1943,17 +2166,18 @@ img {
 }
 
 .finds-tab {
-  padding: 6px 16px;
+  padding: 7px 18px;
   border-radius: var(--radius-pill);
   font-size: 12.5px;
   font-weight: 500;
   color: var(--cocoa-muted);
-  background: #f7f3ee;
+  background: #f4ede4;
   transition: all var(--transition-fast);
+  border: 1px solid rgba(70, 49, 45, 0.05);
 }
 
 .finds-tab:hover {
-  background: #ede6dd;
+  background: #eae0d4;
   color: var(--dark-cocoa);
 }
 
@@ -1961,31 +2185,99 @@ img {
   background: var(--dark-cocoa);
   color: #fff8ef;
   font-weight: 600;
+  border-color: var(--dark-cocoa);
 }
 
-.finds-grid {
+/* Visual Product Cards Grid */
+.finds-visual-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
-  max-width: 980px;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
-.finds-card {
+.finds-visual-card {
   background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid rgba(70, 49, 45, 0.08);
-  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(70, 49, 45, 0.09);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.finds-visual-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(70, 49, 45, 0.08);
+  border-color: rgba(70, 49, 45, 0.22);
+}
+
+/* Product Card Image */
+.finds-visual-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 185px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finds-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.finds-visual-card:hover .finds-visual-img {
+  transform: scale(1.05);
+}
+
+.finds-visual-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px;
+  text-align: center;
+}
+
+.placeholder-icon {
+  font-size: 24px;
+  color: rgba(70, 49, 45, 0.3);
+}
+
+.placeholder-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(70, 49, 45, 0.65);
+}
+
+.finds-visual-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--dark-cocoa);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(4px);
+}
+
+/* Card Body */
+.finds-visual-body {
+  padding: 16px 18px 18px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  cursor: pointer;
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
-}
-
-.finds-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(70, 49, 45, 0.2);
+  flex: 1;
 }
 
 .finds-card-meta {
@@ -2007,26 +2299,36 @@ img {
   font-weight: 600;
   color: var(--dark-cocoa);
   background: #f5eee8;
-  padding: 2px 7px;
+  padding: 2px 8px;
   border-radius: var(--radius-pill);
 }
 
-.finds-card-title {
+.finds-visual-title {
   font-family: var(--font-serif);
   font-size: 16.5px;
   font-weight: 600;
   color: var(--dark-cocoa);
+  margin: 0;
+  line-height: 1.3;
 }
 
-.finds-card-desc {
+.finds-visual-desc {
   font-size: 12.5px;
   line-height: 1.45;
   color: var(--cocoa-muted);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.finds-card-footer {
+.finds-visual-footer {
   margin-top: auto;
-  padding-top: 8px;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .finds-inspect-btn {
@@ -2039,8 +2341,74 @@ img {
   transition: color var(--transition-fast);
 }
 
-.finds-card:hover .finds-inspect-btn {
+.finds-explore-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--cocoa-muted);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all var(--transition-fast);
+}
+
+.finds-visual-card:hover .finds-inspect-btn,
+.finds-visual-card:hover .finds-explore-action {
   color: var(--dark-cocoa);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive Breakpoints for Bento Grid */
+@media (max-width: 980px) {
+  .finds-bento-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .bento-card-center {
+    grid-column: 1 / span 2;
+    grid-row: auto;
+    height: 380px;
+  }
+
+  .bento-card-pantry,
+  .bento-card-oils,
+  .bento-card-aloe,
+  .bento-card-wash {
+    grid-column: auto;
+    grid-row: auto;
+    height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .finds-bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card-center {
+    grid-column: 1;
+    height: 340px;
+  }
+
+  .bento-card-pantry,
+  .bento-card-oils,
+  .bento-card-aloe,
+  .bento-card-wash {
+    grid-column: 1;
+    height: 220px;
+  }
+
+  .bento-card-content {
+    max-width: 85%;
+    padding: 18px 20px;
+  }
+
+  .bento-content-tall .bento-card-title {
+    font-size: 19px;
+  }
 }
 
 /* ============================================================

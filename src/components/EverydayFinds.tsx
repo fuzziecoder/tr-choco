@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { products } from "../data/products";
-import { Sparkles, ArrowUpRight } from "lucide-react";
+import { findsBentoImages } from "../data/assetManifest";
+import { Sparkles, ArrowUpRight, ArrowRight } from "lucide-react";
 
 interface EverydayFindsProps {
   onSelectProduct: (productSlug: string) => void;
@@ -29,14 +30,154 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
           <span>SUPPORTING CATEGORIES</span>
         </span>
         <h2 id="finds-heading" className="section-title">
-          Everyday Finds & Botanicals
+          Everyday Finds &amp; Botanicals
         </h2>
         <p className="section-description">
           Mindfully curated traditional pantry staples, botanical oils, and natural care essentials.
         </p>
       </div>
 
-      {/* Quieter Sub-Category Pill Tabs */}
+      {/* Editorial Bento Showcase Grid (Exact Reference Image Style) */}
+      <div className="finds-bento-container">
+        <div className="finds-bento-grid">
+          {/* Card 1: Top Left - Pantry Staples */}
+          <div
+            className="bento-find-card bento-card-pantry"
+            role="button"
+            tabIndex={0}
+            onClick={() => onSelectProduct("ghee-400ml")}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelectProduct("ghee-400ml")}
+            aria-label="Discover Pure Simmered Desi Ghee and Raw Honey"
+          >
+            <div className="bento-card-bg-wrap">
+              <img
+                src={findsBentoImages.pantry}
+                alt="Pure Simmered Desi Ghee & Raw Honey"
+                className="bento-card-img bento-card-img-right"
+                loading="lazy"
+              />
+            </div>
+            <div className="bento-card-content">
+              <span className="bento-meta-text">2 Products · Kitchen Staples</span>
+              <div className="bento-pill-tag dark">Traditional Pantry</div>
+              <h3 className="bento-card-title dark-text">
+                Pure Simmered Desi Ghee &amp; Raw Forest Honey
+              </h3>
+            </div>
+          </div>
+
+          {/* Card 2: Bottom Left - Botanical Oils */}
+          <div
+            className="bento-find-card bento-card-oils"
+            role="button"
+            tabIndex={0}
+            onClick={() => onSelectProduct("vetiver-oil")}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelectProduct("vetiver-oil")}
+            aria-label="Explore Grounding Aromas and Botanical Oils"
+          >
+            <div className="bento-card-bg-wrap">
+              <img
+                src={findsBentoImages.oils}
+                alt="Botanical Oils and Extracts"
+                className="bento-card-img bento-card-img-right"
+                loading="lazy"
+              />
+            </div>
+            <div className="bento-card-content">
+              <span className="bento-meta-text">5 Products · Distilled Extracts</span>
+              <div className="bento-pill-tag dark">Botanical Oils</div>
+              <h3 className="bento-card-title dark-text">
+                Grounding Aromas: Distilled Vetiver, Citronella &amp; Facial Oils
+              </h3>
+            </div>
+          </div>
+
+          {/* Card 3: Center Column - Tall Full Height Feature */}
+          <div
+            className="bento-find-card bento-card-center"
+            role="button"
+            tabIndex={0}
+            onClick={() => onSelectProduct("body-lotion")}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelectProduct("body-lotion")}
+            aria-label="Elevate Your Daily Ritual with Swasthya Botanical Care"
+          >
+            <div className="bento-card-bg-wrap">
+              <img
+                src={findsBentoImages.ritualCenter}
+                alt="Swasthya Botanical Ritual & Body Care"
+                className="bento-card-img bento-card-img-cover"
+                loading="lazy"
+              />
+              <div className="bento-card-gradient-overlay" />
+            </div>
+            <div className="bento-card-content bento-content-tall">
+              <span className="bento-meta-text light">12 Products · Swasthya Care</span>
+              <div className="bento-pill-tag light">Botanical Body Care</div>
+              <h3 className="bento-card-title light-text">
+                Elevate Your Daily Ritual: Cold Moisturiser &amp; Jojoba Nourishing Lotions
+              </h3>
+            </div>
+          </div>
+
+          {/* Card 4: Top Right - Skincare Jar */}
+          <div
+            className="bento-find-card bento-card-aloe"
+            role="button"
+            tabIndex={0}
+            onClick={() => onSelectProduct("aloe-vera-gel")}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelectProduct("aloe-vera-gel")}
+            aria-label="Get Silky Smooth Skin with Pure Swasthya Aloe Vera Face Gel"
+          >
+            <div className="bento-card-bg-wrap">
+              <img
+                src={findsBentoImages.aloeJar}
+                alt="Swasthya Aloe Vera Face Gel Cream"
+                className="bento-card-img bento-card-img-right"
+                loading="lazy"
+              />
+            </div>
+            <div className="bento-card-content">
+              <span className="bento-meta-text">100g Jar · All Skin Types</span>
+              <div className="bento-pill-tag dark">Skincare</div>
+              <h3 className="bento-card-title dark-text">
+                Get Silky Smooth Skin: Shop Our Pure Botanical Aloe Vera Face Gel
+              </h3>
+            </div>
+          </div>
+
+          {/* Card 5: Bottom Right - Vibrant Crimson Washes */}
+          <div
+            className="bento-find-card bento-card-wash"
+            role="button"
+            tabIndex={0}
+            onClick={() => onSelectProduct("body-wash")}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelectProduct("body-wash")}
+            aria-label="Sensual and Invigorating Body Washes and Cleansers"
+          >
+            <div className="bento-card-bg-wrap">
+              <img
+                src={findsBentoImages.vibrantWash}
+                alt="Luxury Botanical Body and Face Washes"
+                className="bento-card-img bento-card-img-right"
+                loading="lazy"
+              />
+            </div>
+            <div className="bento-card-content">
+              <span className="bento-meta-text light">8 Formulations · 200 ml</span>
+              <div className="bento-pill-tag white">Luxury Washes</div>
+              <h3 className="bento-card-title light-text">
+                Sensual &amp; Invigorating: Saffron, Lavender &amp; Citrus Foaming Cleansers
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Sub-Category Filter Navigation */}
+      <div className="finds-browse-divider">
+        <span className="browse-divider-label">Explore All Catalog Items</span>
+      </div>
+
       <div className="finds-tab-row" role="tablist" aria-label="Filter Everyday Finds">
         <button
           type="button"
@@ -54,7 +195,7 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
           className={`finds-tab ${activeSubcat === "pantry" ? "is-active" : ""}`}
           onClick={() => setActiveSubcat("pantry")}
         >
-          Pantry & Kitchen (2)
+          Pantry &amp; Kitchen (2)
         </button>
         <button
           type="button"
@@ -63,7 +204,7 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
           className={`finds-tab ${activeSubcat === "personal-care" ? "is-active" : ""}`}
           onClick={() => setActiveSubcat("personal-care")}
         >
-          Botanicals & Personal Care (9)
+          Botanicals &amp; Personal Care (9)
         </button>
         <button
           type="button"
@@ -76,12 +217,12 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
         </button>
       </div>
 
-      {/* Grid with Quieter Minimal Treatment */}
-      <div className="finds-grid">
+      {/* Visual Product Grid with Images and Details */}
+      <div className="finds-visual-grid">
         {displayedItems.map((item) => (
           <div
             key={item.id}
-            className="finds-card"
+            className="finds-visual-card"
             role="button"
             tabIndex={0}
             onClick={() => onSelectProduct(item.slug)}
@@ -93,28 +234,58 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
             }}
             aria-label={`View details for ${item.name}`}
           >
-            <div className="finds-card-meta">
-              <span className="finds-cat-tag">
-                {item.categoryId === "personal-care"
-                  ? "Care"
-                  : item.categoryId === "pantry"
-                  ? "Pantry"
-                  : "Specialty"}
-              </span>
-              {item.variants[0]?.label && (
-                <span className="finds-size-tag">{item.variants[0].label}</span>
+            {/* Product Image Area */}
+            <div
+              className="finds-visual-img-wrap"
+              style={{ backgroundColor: item.palette?.bg || "#F9F6F0" }}
+            >
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="finds-visual-img"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="finds-visual-placeholder">
+                  <span className="placeholder-icon">✦</span>
+                  <span className="placeholder-label">{item.name}</span>
+                </div>
+              )}
+              {item.editorialBadge && (
+                <span className="finds-visual-badge">{item.editorialBadge}</span>
               )}
             </div>
 
-            <h3 className="finds-card-title">{item.name}</h3>
+            {/* Product Details Content */}
+            <div className="finds-visual-body">
+              <div className="finds-card-meta">
+                <span className="finds-cat-tag">
+                  {item.categoryId === "personal-care"
+                    ? "Care & Botanicals"
+                    : item.categoryId === "pantry"
+                    ? "Pantry & Kitchen"
+                    : "Specialty Curation"}
+                </span>
+                {item.variants[0]?.label && (
+                  <span className="finds-size-tag">{item.variants[0].label}</span>
+                )}
+              </div>
 
-            <p className="finds-card-desc">{item.description}</p>
+              <h3 className="finds-visual-title">{item.name}</h3>
 
-            <div className="finds-card-footer">
-              <span className="finds-inspect-btn">
-                <span>View Details</span>
-                <ArrowUpRight size={13} />
-              </span>
+              <p className="finds-visual-desc">{item.description}</p>
+
+              <div className="finds-visual-footer">
+                <span className="finds-inspect-btn">
+                  <span>View Details</span>
+                  <ArrowUpRight size={14} />
+                </span>
+                <span className="finds-explore-action">
+                  <span>Explore</span>
+                  <ArrowRight size={13} />
+                </span>
+              </div>
             </div>
           </div>
         ))}
@@ -122,3 +293,4 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
     </section>
   );
 };
+
