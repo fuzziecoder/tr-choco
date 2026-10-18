@@ -44,11 +44,12 @@ export const SpecularCTA: React.FC<SpecularCTAProps> = ({
     setMousePos({ x: 50, y: 50 });
   };
 
-  // Specular reflection gradient variables
+  // Specular reflection gradient variables & aura vibrance
   const specularStyle: React.CSSProperties = {
     "--specular-x": `${mousePos.x}%`,
     "--specular-y": `${mousePos.y}%`,
-    "--specular-opacity": isHovered ? "0.85" : "0.25",
+    "--specular-opacity": isHovered ? "0.3" : "0.1",
+    "--vibrance": isHovered ? "45%" : "30%",
   } as React.CSSProperties;
 
   const baseClasses = `specular-cta specular-${variant} specular-${size} ${className}`;

@@ -122,18 +122,6 @@ export const Hero: React.FC = () => {
             >
               {siteConfig.hero.primaryCta}
             </SpecularCTA>
-
-            <SpecularCTA
-              variant="secondary"
-              size="md"
-              href="#cafe"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollTo("#cafe");
-              }}
-            >
-              {siteConfig.hero.secondaryCta}
-            </SpecularCTA>
           </div>
         </div>
 

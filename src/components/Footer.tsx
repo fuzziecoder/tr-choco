@@ -58,8 +58,8 @@ export const Footer: React.FC = () => {
                 src="/tr-logo.png"
                 alt="TR Homemade Chocolates Logo"
                 className="footer-logo-img"
-                width={84}
-                height={84}
+                width={52}
+                height={52}
               />
               <div>
                 <span className="footer-script-logo">{siteConfig.brandName}</span>
