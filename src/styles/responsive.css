@@ -77,6 +77,11 @@
     height: 280px;
   }
 
+  .hero-video-container {
+    min-height: 240px;
+    border-radius: 20px;
+  }
+
   /* Bento Deliberate Reflow for Mobile/Tablet */
   .bento-section {
     padding: 0 16px 36px 16px;
@@ -146,7 +151,52 @@
     transform: translateY(0);
   }
 
-  /* Scroll Stack: Normal flow on mobile */
+  /* Philosophy Section: Content above stack on tablet/mobile */
+  .philosophy-section {
+    padding: 44px 16px;
+  }
+
+  .philosophy-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .philosophy-left-col {
+    max-width: 100%;
+  }
+
+  .philosophy-heading {
+    font-size: 32px;
+  }
+
+  .philosophy-right-col {
+    width: 100%;
+  }
+
+  .craft-stack-stage {
+    max-width: 100%;
+    height: auto;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .craft-card {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+    transform: none !important;
+    opacity: 1 !important;
+    padding: 24px 20px;
+  }
+
+  .craft-card-title {
+    font-size: 24px;
+  }
+
+  /* Legacy Scroll Stack fallbacks */
   .story-scroll-section {
     padding: 36px 16px;
   }
@@ -179,7 +229,23 @@
   }
 
   .sphere-stage {
-    height: 320px;
+    height: 420px;
+    perspective: 900px;
+  }
+
+  .sphere-card {
+    width: clamp(230px, 68vw, 270px);
+    height: 350px;
+    padding: 14px;
+  }
+
+  .sphere-card-visual {
+    height: 170px;
+    margin-bottom: 10px;
+  }
+
+  .sphere-card-title {
+    font-size: 18px;
   }
 
   .sphere-rotor {
