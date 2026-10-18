@@ -321,17 +321,6 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
                   isSelected ? "Currently selected." : "Click to view products."
                 }`}
               >
-                <div className="category-card-visual" aria-hidden="true">
-                  <img
-                    src={cat.image}
-                    alt={cat.alt}
-                    loading="lazy"
-                    decoding="async"
-                    width={150}
-                    height={100}
-                  />
-                </div>
-
                 <div className="category-card-content">
                   <div className="category-card-header-line">
                     <h4 className="category-card-title">{cat.name}</h4>
@@ -345,6 +334,17 @@ export const CatalogueSection: React.FC<CatalogueSectionProps> = ({
                   <span className="category-card-count">
                     {count} {count === 1 ? "Product" : "Products"}
                   </span>
+                </div>
+
+                <div className="category-card-visual" aria-hidden="true">
+                  <img
+                    src={cat.image}
+                    alt={cat.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width={120}
+                    height={90}
+                  />
                 </div>
               </button>
             );

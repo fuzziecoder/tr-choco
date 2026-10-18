@@ -44,12 +44,13 @@
   }
 
   .category-showcase-card {
-    height: 198px;
-    padding: 8px 8px 12px 8px;
+    height: 102px;
+    padding: 10px 12px 10px 14px;
   }
 
   .category-card-visual {
-    height: 104px;
+    width: 78px;
+    height: 72px;
   }
 
   .category-card-title {
@@ -57,7 +58,7 @@
   }
 
   .category-card-count {
-    font-size: 11.5px;
+    font-size: 11px;
   }
 
   .catalogue-grid {
@@ -90,16 +91,18 @@
   }
 
   .category-showcase-card {
-    flex: 0 0 135px;
-    width: 135px;
-    height: 188px;
+    flex: 0 0 215px;
+    width: 215px;
+    height: 96px;
     scroll-snap-align: start;
-    padding: 8px 8px 12px 8px;
+    padding: 10px 12px 10px 14px;
     grid-column: auto !important;
   }
 
   .category-card-visual {
-    height: 94px;
+    width: 74px;
+    height: 70px;
+    margin-left: 6px;
   }
 
   .category-card-title {
@@ -107,7 +110,7 @@
   }
 
   .category-card-count {
-    font-size: 11.5px;
+    font-size: 11px;
   }
 }
 
@@ -448,14 +451,15 @@
 /* Large Phones & Compact Tablets (<= 600px) */
 @media (max-width: 600px) {
   .category-showcase-card {
-    flex: 0 0 128px;
-    width: 128px;
-    height: 182px;
-    padding: 7px 7px 10px 7px;
+    flex: 0 0 195px;
+    width: 195px;
+    height: 92px;
+    padding: 8px 10px 8px 12px;
   }
 
   .category-card-visual {
-    height: 88px;
+    width: 68px;
+    height: 64px;
   }
 
   .category-card-title {
@@ -463,7 +467,7 @@
   }
 
   .category-card-count {
-    font-size: 11px;
+    font-size: 10.5px;
   }
 
   .shop-by-category-header {
