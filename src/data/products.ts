@@ -1671,25 +1671,35 @@ export const products: CatalogueProduct[] = [
   {
     id: "prod-shampoo",
     slug: "shampoo",
-    name: "Shampoo",
-    sourceNames: ["Shampoo"],
+    name: "TR Herbal Essentials Shampoo Collection",
+    sourceNames: ["Shampoo", "Aloe Vera Shampoo", "Charcoal Shampoo"],
     categoryId: "personal-care",
     collectionIds: [],
-    description: "Gentle cleansing hair wash formulation with botanical extracts.",
+    description: "Nourishing herbal hair cleansers crafted with pure Aloe Vera and Activated Charcoal extracts for clean, healthy, and revitalized hair.",
     image: productImages["shampoo"] ?? null,
     gallery: productGalleries["shampoo"] ?? [],
     variants: [
       {
-        id: "shampoo-std",
-        label: "Standard Bottle",
-        sourceName: "Shampoo",
-        sourceItemCode: "shampoo",
+        id: "shampoo-aloevera-200ml",
+        label: "Aloe Vera Shampoo (200 ml)",
+        volumeMl: 200,
+        sourceName: "Aloe Vera Shampoo",
+        sourceItemCode: "TR-SHAMP-ALOE",
+        sellingPrice: null,
+      },
+      {
+        id: "shampoo-charcoal-200ml",
+        label: "Activated Charcoal Shampoo (200 ml)",
+        volumeMl: 200,
+        sourceName: "Charcoal Shampoo",
+        sourceItemCode: "TR-SHAMP-CHAR",
         sellingPrice: null,
       },
     ],
-    featured: false,
+    featured: true,
+    editorialBadge: "Herbal Care",
     needsReview: false,
-    palette: { bg: "#F6F5F8", border: "#E4E1EB", accent: "#46312D" },
+    palette: { bg: "#F4F7F2", border: "#DCE5D8", accent: "#2D4631" },
   },
   {
     id: "prod-rosewater-multani-mitti-combo",
@@ -1748,10 +1758,7 @@ export const products: CatalogueProduct[] = [
     collectionIds: [],
     description: "Deeply nourishing natural body lotions crafted with botanical extracts, available in Cold Moisturiser and Avocado & Jojoba.",
     image: productImages["cold-moisturiser-lotion"] ?? null,
-    gallery: [
-      "/images/products/cold-moisturiser-lotion.jpg",
-      "/images/products/avocado-jojoba-lotion.jpg",
-    ],
+    gallery: productGalleries["body-lotion"] ?? [],
     variants: [
       {
         id: "lotion-cold-moisturiser",
@@ -1784,11 +1791,7 @@ export const products: CatalogueProduct[] = [
     collectionIds: [],
     description: "Invigorating and fragrant luxury body washes formulated for all skin types in pure Saffron, soothing Lavender, and cleansing Neem & Aloe Vera.",
     image: productImages["saffron-body-wash"] ?? null,
-    gallery: [
-      "/images/products/saffron-body-wash.jpg",
-      "/images/products/lavender-body-wash.jpg",
-      "/images/products/neem-aloevera-body-wash.jpg",
-    ],
+    gallery: productGalleries["body-wash"] ?? [],
     variants: [
       {
         id: "wash-saffron-200ml",
@@ -1829,12 +1832,7 @@ export const products: CatalogueProduct[] = [
     collectionIds: [],
     description: "Pure gentle foaming botanical face washes in refreshing Avocado, clarifying Hibiscus, rejuvenating Neem Papaya, and radiant Vitamin Orange.",
     image: productImages["orange-face-wash"] ?? null,
-    gallery: [
-      "/images/products/orange-face-wash.jpg",
-      "/images/products/avocado-face-wash.jpg",
-      "/images/products/hibiscus-face-wash.jpg",
-      "/images/products/neem-papaya-face-wash.jpg",
-    ],
+    gallery: productGalleries["face-wash"] ?? [],
     variants: [
       {
         id: "fw-orange-200ml",
