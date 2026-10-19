@@ -274,6 +274,8 @@ img {
   max-width: 1560px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 /* Brand Logo & Emblem */
@@ -670,6 +672,10 @@ img {
   background: linear-gradient(135deg, #fff3cc 0%, #fae2e8 50%, #efbaca 100%);
 }
 
+.card-cocoa-warm {
+  background: #2b1b17;
+}
+
 /* Bento Image Containers */
 .bento-image-container {
   width: 100%;
@@ -700,6 +706,13 @@ img {
   padding: 8px 14px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.card-square .bento-overlay-caption {
+  right: auto;
+  max-width: fit-content;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 14px rgba(27, 16, 13, 0.18);
 }
 
 .caption-tag {
@@ -872,12 +885,13 @@ img {
 }
 
 .card-wide-sage {
-  background-color: var(--sage);
+  background: linear-gradient(135deg, #fdfbf7 0%, #f4ece1 100%);
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   align-items: center;
   padding: 32px 36px;
   gap: 28px;
+  border: 1px solid rgba(70, 49, 45, 0.08);
 }
 
 .wide-text-side {
@@ -1133,27 +1147,30 @@ img {
    OUR PHILOSOPHY (Balanced Two-Column & Craft Stack)
    ============================================================ */
 .philosophy-section {
-  padding: clamp(60px, 7vw, 100px) clamp(20px, 4vw, 64px);
+  padding: clamp(28px, 4vh, 48px) clamp(20px, 3.5vw, 64px);
   background-color: var(--warm-white);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .philosophy-container {
-  max-width: 1400px;
+  max-width: 1560px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
-  gap: clamp(40px, 6vw, 84px);
+  gap: clamp(36px, 5vw, 76px);
+  width: 100%;
 }
 
 /* Left Column */
 .philosophy-left-col {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 580px;
+  gap: clamp(12px, 1.8vh, 20px);
+  max-width: 660px;
   z-index: 2;
 }
 
@@ -1161,7 +1178,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #bd6a82;
@@ -1174,15 +1191,15 @@ img {
 
 .philosophy-heading {
   font-family: var(--font-serif);
-  font-size: clamp(34px, 4vw, 48px);
+  font-size: clamp(34px, 3.6vw, 48px);
   font-weight: 700;
   color: var(--dark-cocoa);
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 .philosophy-lead {
-  font-size: clamp(16px, 1.3vw, 18px);
+  font-size: clamp(16px, 1.25vw, 18.5px);
   line-height: 1.55;
   color: var(--dark-cocoa);
   font-weight: 500;
@@ -1190,16 +1207,16 @@ img {
 
 .philosophy-subtext {
   font-size: 14.5px;
-  line-height: 1.65;
+  line-height: 1.62;
   color: var(--cocoa-muted);
 }
 
 .philosophy-pillars {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 10px;
-  padding-top: 20px;
+  gap: 12px;
+  margin-top: 6px;
+  padding-top: 16px;
   border-top: 1px solid rgba(70, 49, 45, 0.08);
 }
 
@@ -1215,7 +1232,7 @@ img {
 
 .pillar-num {
   font-family: var(--font-serif);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #bd6a82;
   background: rgba(239, 186, 202, 0.25);
@@ -1247,7 +1264,7 @@ img {
 .philosophy-pillar-card-content span {
   font-size: 12px;
   color: var(--cocoa-muted);
-  line-height: 1.4;
+  line-height: 1.42;
 }
 
 .philosophy-chapter-nav {
@@ -1309,8 +1326,8 @@ img {
 .craft-stack-stage {
   position: relative;
   width: 100%;
-  max-width: 520px;
-  height: 440px;
+  max-width: 580px;
+  height: clamp(450px, 52vh, 500px);
 }
 
 .craft-card {
@@ -1320,8 +1337,8 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 28px;
-  padding: clamp(28px, 3.5vw, 42px);
-  box-shadow: 0 16px 38px rgba(56, 39, 34, 0.09);
+  padding: clamp(28px, 3.2vw, 42px);
+  box-shadow: 0 16px 42px rgba(56, 39, 34, 0.1);
   border: 1px solid rgba(70, 49, 45, 0.08);
   transform-origin: center top;
   will-change: transform, opacity;
@@ -1436,17 +1453,38 @@ img {
    INFINITE MENU (3D Chocolate Discovery)
    ============================================================ */
 .discovery-section {
-  padding: 56px 28px;
-  background: linear-gradient(180deg, #f7f2ed 0%, #fffefa 100%);
-  border-top: 1px solid rgba(70, 49, 45, 0.05);
+  padding: clamp(16px, 2.4vh, 26px) clamp(20px, 3.5vw, 64px) clamp(12px, 1.8vh, 20px);
+  background-color: var(--warm-white);
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.pin-spacer {
+  background-color: var(--warm-white) !important;
+}
+
+.discovery-section .section-header {
+  margin: 0 auto clamp(6px, 1.2vh, 14px) auto;
+  gap: 6px;
+}
+
+.discovery-section .section-title {
+  font-size: clamp(26px, 2.7vw, 34px);
+  line-height: 1.15;
+}
+
+.discovery-section .section-description {
+  font-size: clamp(13px, 1.1vw, 14.5px);
+  line-height: 1.35;
 }
 
 .discovery-mode-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 860px;
-  margin: 0 auto 24px auto;
+  max-width: 960px;
+  margin: 0 auto clamp(8px, 1.2vh, 16px) auto;
 }
 
 .sphere-nav-buttons {
@@ -1456,8 +1494,8 @@ img {
 }
 
 .sphere-arrow-btn {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: #ffffff;
   color: var(--dark-cocoa);
@@ -1483,11 +1521,11 @@ img {
 .discovery-view-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   background: #ffffff;
-  padding: 8px 16px;
+  padding: 7px 16px;
   border-radius: var(--radius-pill);
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--dark-cocoa);
   border: 1px solid rgba(70, 49, 45, 0.1);
@@ -1497,13 +1535,13 @@ img {
 /* 3D Sphere Stage */
 .sphere-stage-wrapper {
   position: relative;
-  max-width: 1200px;
+  max-width: 1360px;
   margin: 0 auto;
   overflow: visible;
 }
 
 .sphere-stage {
-  height: 480px;
+  height: clamp(330px, 42vh, 370px);
   perspective: 1200px;
   perspective-origin: 50% 50%;
   display: flex;
@@ -1534,15 +1572,15 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: clamp(260px, 24vw, 300px);
-  height: 380px;
-  border-radius: 24px;
+  width: clamp(260px, 22vw, 280px);
+  height: clamp(310px, 38vh, 340px);
+  border-radius: 18px;
   border: 1px solid;
-  padding: 18px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 12px 32px rgba(70, 49, 45, 0.08);
+  box-shadow: 0 10px 28px rgba(70, 49, 45, 0.08);
   backface-visibility: hidden;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
   will-change: transform, opacity;
@@ -1551,21 +1589,21 @@ img {
 }
 
 .sphere-card.is-active {
-  box-shadow: 0 20px 48px rgba(70, 49, 45, 0.18);
+  box-shadow: 0 16px 40px rgba(70, 49, 45, 0.18);
   border-width: 2px;
 }
 
 .sphere-card-visual {
   position: relative;
   width: 100%;
-  height: 200px;
-  border-radius: 16px;
+  height: clamp(170px, 21vh, 185px);
+  border-radius: 14px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 
 .sphere-card-img {
@@ -1592,14 +1630,14 @@ img {
 
 .sphere-placeholder-initial {
   font-family: var(--font-serif);
-  font-size: 42px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--dark-cocoa);
   opacity: 0.85;
 }
 
 .sphere-placeholder-tag {
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 0.15em;
   font-weight: 700;
   color: #bd6a82;
@@ -1607,18 +1645,18 @@ img {
 
 .sphere-card-badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 10px;
+  top: 6px;
+  left: 6px;
+  font-size: 9px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #8c5765;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(6px);
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: var(--radius-pill);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .sphere-card-body {
@@ -1630,10 +1668,10 @@ img {
 
 .sphere-card-title {
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 14.5px;
   font-weight: 700;
   color: var(--dark-cocoa);
-  line-height: 1.25;
+  line-height: 1.2;
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1645,26 +1683,26 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 4px;
+  padding-top: 4px;
   border-top: 1px solid rgba(70, 49, 45, 0.08);
 }
 
 .sphere-variant-note {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--cocoa-muted);
 }
 
 .sphere-price-tag {
-  font-size: 13.5px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--dark-cocoa);
 }
 
 .sphere-card-action {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.85);
   display: flex;
@@ -1682,9 +1720,9 @@ img {
 
 .sphere-drag-hint {
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--cocoa-muted);
-  margin-top: 16px;
+  margin-top: clamp(4px, 0.6vh, 8px);
   letter-spacing: 0.02em;
 }
 
@@ -1793,12 +1831,12 @@ img {
 
 /* Active Discovery Panel */
 .discovery-active-panel {
-  max-width: 820px;
-  margin: 32px auto 0 auto;
+  max-width: 920px;
+  margin: clamp(10px, 1.5vh, 18px) auto 0 auto;
   background: #ffffff;
-  border-radius: 24px;
-  padding: 28px 32px;
-  box-shadow: 0 8px 30px rgba(56, 39, 34, 0.06);
+  border-radius: 20px;
+  padding: clamp(14px, 1.8vh, 18px) clamp(22px, 3vw, 32px);
+  box-shadow: 0 8px 28px rgba(56, 39, 34, 0.08);
   border: 1px solid rgba(70, 49, 45, 0.08);
 }
 
@@ -1806,17 +1844,17 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 24px;
 }
 
 .active-panel-text {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
 }
 
 .active-category-pill {
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #8c5765;
@@ -1824,26 +1862,27 @@ img {
 
 .active-product-name {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: clamp(20px, 2.2vw, 25px);
   font-weight: 700;
   color: var(--dark-cocoa);
+  line-height: 1.15;
 }
 
 .active-product-desc {
   font-size: 13.5px;
-  line-height: 1.5;
+  line-height: 1.45;
   color: var(--cocoa-muted);
-  max-width: 480px;
+  max-width: 540px;
 }
 
 .active-variants-preview {
   display: flex;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 7px;
+  margin-top: 3px;
 }
 
 .active-variant-chip {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
   background: #f7f1eb;
   padding: 3px 10px;
@@ -2803,27 +2842,98 @@ img {
 
 .cafe-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-  max-width: 1240px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
 .cafe-item-card {
   border-radius: 20px;
   border: 1px solid;
-  padding: 22px;
+  overflow: hidden;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
   box-shadow: var(--shadow-card);
   cursor: pointer;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .cafe-item-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
+}
+
+.cafe-item-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 185px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cafe-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cafe-item-card:hover .cafe-item-img {
+  transform: scale(1.05);
+}
+
+.cafe-item-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.85), rgba(243, 235, 224, 0.5));
+}
+
+.cafe-placeholder-initial {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--dark-cocoa);
+  opacity: 0.85;
+}
+
+.cafe-placeholder-brand {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #bd6a82;
+}
+
+.cafe-item-card .cafe-special-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #8c5765;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.cafe-item-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
 }
 
 .cafe-item-header {
@@ -2837,15 +2947,6 @@ img {
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--cocoa-muted);
-}
-
-.cafe-special-badge {
-  font-size: 10px;
-  font-weight: 700;
-  color: #8c5765;
-  background: var(--blush-light);
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
 }
 
 .cafe-item-title {

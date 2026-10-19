@@ -28,14 +28,14 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
             className="bento-card card-tall card-lavender-glow"
             role="button"
             tabIndex={0}
-            onClick={() => onSelectProduct("white-strawberry")}
-            onKeyDown={(e) => e.key === "Enter" && onSelectProduct("white-strawberry")}
-            aria-label="View White Strawberry Macaron Details"
+            onClick={() => onSelectProduct("chocolate-bar")}
+            onKeyDown={(e) => e.key === "Enter" && onSelectProduct("chocolate-bar")}
+            aria-label="View TR Artisan Chocolate Bar Details"
           >
             <div className="bento-image-container">
               <img
                 src={heroImages.macaronLavender}
-                alt="Gourmet pink strawberry macaron with creamy vanilla filling"
+                alt="Handcrafted TR artisan chocolate bar with molten dark chocolate pour on lavender background"
                 className="bento-image"
                 loading="eager"
                 decoding="async"
@@ -44,33 +44,34 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
               />
             </div>
             <div className="bento-overlay-caption">
-              <span className="caption-tag">White Strawberry</span>
-              <p className="caption-sub">Hand-piped Ganache</p>
+              <span className="caption-tag">TR Signature Bar</span>
+              <p className="caption-sub">Molten Dark Chocolate Pour</p>
             </div>
           </div>
 
-          {/* Card 2: Left Small Underneath (Pale Sage with Cherry Cupcake) */}
+          {/* Card 2: Left Small Underneath (Artisan Chilled Chocolate Shake) */}
           <div
-            className="bento-card card-square card-sage"
+            className="bento-card card-square card-cocoa-warm"
             role="button"
             tabIndex={0}
-            onClick={() => onSelectProduct("cherry-with-chocolate")}
-            onKeyDown={(e) => e.key === "Enter" && onSelectProduct("cherry-with-chocolate")}
-            aria-label="View Cherry with Chocolate Confectionery"
+            onClick={() => onSelectProduct("drinking-chocolate")}
+            onKeyDown={(e) => e.key === "Enter" && onSelectProduct("drinking-chocolate")}
+            aria-label="View Chilled Chocolate Shake Details"
           >
             <div className="bento-image-container">
               <img
                 src={heroImages.cupcakeCherry}
-                alt="Vanilla cupcake with buttercream swirl and glossy red cherry"
+                alt="Artisan chilled chocolate shake topped with dark chocolate bar, chocolate pearls, and cocoa shavings"
                 className="bento-image"
                 loading="eager"
                 decoding="async"
                 width={380}
-                height={200}
+                height={260}
               />
             </div>
             <div className="bento-overlay-caption">
-              <span className="caption-tag">Cherry Confection</span>
+              <span className="caption-tag">Chilled Cocoa</span>
+              <p className="caption-sub">Artisan Cold Shake</p>
             </div>
           </div>
         </div>
@@ -120,16 +121,19 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
             <div className="bento-image-container">
               <img
                 src={heroImages.cupcakesDisplay}
-                alt="Artisanal display of gourmet cupcakes and lavender macaron on white ceramic pedestal"
+                alt="Artisan marble pedestal display of TR embossed chocolate blocks, dusted truffles, cocoa macarons, and roasted hazelnuts with molten chocolate splash"
                 className="bento-image"
                 loading="lazy"
+                decoding="async"
+                width={580}
+                height={433}
               />
             </div>
 
             <div className="landscape-badge-row">
               <div className="floating-bento-badge">
                 <Sparkles size={13} className="badge-sparkle" />
-                <span>Vitrine Selection</span>
+                <span>Artisan Vitrine</span>
                 <Plus size={13} />
               </div>
               <div className="floating-mini-icon">
@@ -153,14 +157,17 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
             <div className="bento-image-container">
               <img
                 src={heroImages.macaronsStack}
-                alt="Three French macarons floating in vertical column: pistachio, blush, and raspberry"
+                alt="Dynamic vertical swirl of molten artisan chocolate, embossed TR chocolate blocks, handcrafted truffles, and roasted hazelnuts"
                 className="bento-image"
                 loading="lazy"
+                decoding="async"
+                width={380}
+                height={508}
               />
             </div>
             <div className="bento-overlay-caption">
-              <span className="caption-tag">Flavour Trilogy</span>
-              <p className="caption-sub">Pistachio • Rose • Currant</p>
+              <span className="caption-tag">Signature Cascade</span>
+              <p className="caption-sub">Hazelnut • Truffles • Ganache</p>
             </div>
           </div>
 
@@ -189,29 +196,29 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
       </div>
 
       {/* ============================================================
-          ROW 3: Wide Sage Artisanal Bakes Card (Screenshot Exact)
+          ROW 3: Wide Signature Pure Chocolate Artistry Card
           ============================================================ */}
       <div className="bento-wide-row">
         <div
           className="bento-card card-wide-sage"
           role="button"
           tabIndex={0}
-          onClick={() => onFilterCategory("cakes-bakery")}
-          onKeyDown={(e) => e.key === "Enter" && onFilterCategory("cakes-bakery")}
-          aria-label="Explore Artisanal Bakes & Pastries"
+          onClick={() => onFilterCategory("chocolates")}
+          onKeyDown={(e) => e.key === "Enter" && onFilterCategory("chocolates")}
+          aria-label="Explore Handcrafted Pure Chocolate Art"
         >
           <div className="wide-text-side">
-            <span className="wide-eyebrow">CRAFT & HERITAGE</span>
-            <h3 className="wide-heading">Artisanal Bakes & Pastries</h3>
+            <span className="wide-eyebrow">PURE CRAFT & ARTISTRY</span>
+            <h3 className="wide-heading">Sculpted Chocolate & Artisan Cocoa</h3>
             <p className="wide-description">
-              Soft layered sponge cakes, chocolate brownies with molten ganache centres, and tender morning brioche.
+              Slow-churned cacao, molten dark ganache, and signature bean-to-bar craftsmanship poured into sculpted liquid perfection.
             </p>
             <div className="wide-btn-group">
               <span className="bento-pill-btn pill-dark">
-                <span>Explore Bakes</span>
+                <span>Explore Chocolates</span>
               </span>
               <span className="bento-pill-btn pill-outline">
-                <span>View Menu</span>
+                <span>Discover Collection</span>
               </span>
             </div>
           </div>
@@ -219,9 +226,11 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
           <div className="wide-image-side">
             <img
               src={heroImages.spongeSlice}
-              alt="Slice of vanilla layered sponge cake with white piped buttercream rosettes on sage linen"
+              alt="Sculptural 3D glass typography spelling CHOCOLATE filled with molten dark chocolate, illuminated by morning sunbeams"
               className="wide-image"
               loading="lazy"
+              width={580}
+              height={240}
             />
           </div>
         </div>

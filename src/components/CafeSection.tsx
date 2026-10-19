@@ -9,16 +9,22 @@ interface CafeSectionProps {
 }
 
 export const CafeSection: React.FC<CafeSectionProps> = ({ onSelectProduct }) => {
-  // Curated café items from the central dataset (no duplication of product data)
+  // Curated café items from the central dataset
   const cafeSlugs = [
-    "hot-chocolate-coffee",
-    "drinking-chocolate",
-    "blue-tea",
-    "herbal-tea-all-varieties",
+    "brownie-tub",
+    "mini-cookies-dip",
+    "brownie-with-chocolate",
+    "donut",
     "avocado-sandwich",
+    "veg-sandwich",
+    "chocolate-sandwich",
+    "masala-sweetcorn",
+    "sweetcorn",
     "avocado-milkshake",
-    "egg-puffs",
-    "veg-puffs",
+    "hot-chocolate-coffee",
+    "cold-chocolate-coffee",
+    "tea",
+    "coffee",
   ];
 
   const cafeItems = cafeSlugs
@@ -60,24 +66,45 @@ export const CafeSection: React.FC<CafeSectionProps> = ({ onSelectProduct }) => 
             }}
             aria-label={`View details for ${item.name}`}
           >
-            <div className="cafe-item-header">
-              <span className="cafe-badge">{item.categoryId.toUpperCase()}</span>
+            {/* Card Image Slot (Displays image when available, or elegant monogram placeholder) */}
+            <div className="cafe-item-img-wrap">
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="cafe-item-img"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="cafe-item-placeholder">
+                  <span className="cafe-placeholder-initial">
+                    {item.name.charAt(0)}
+                  </span>
+                  <span className="cafe-placeholder-brand">TR HOSUR</span>
+                </div>
+              )}
               {item.editorialBadge && (
                 <span className="cafe-special-badge">{item.editorialBadge}</span>
               )}
             </div>
 
-            <h3 className="cafe-item-title">{item.name}</h3>
+            <div className="cafe-item-body">
+              <div className="cafe-item-header">
+                <span className="cafe-badge">{item.categoryId.toUpperCase()}</span>
+              </div>
 
-            <p className="cafe-item-desc">{item.description}</p>
+              <h3 className="cafe-item-title">{item.name}</h3>
 
-            <div className="cafe-item-footer">
-              <span className="cafe-format-tag">
-                {item.variants[0]?.label || "Artisan Serve"}
-              </span>
-              <span className="cafe-arrow-link" aria-hidden="true">
-                <ArrowRight size={14} />
-              </span>
+              <p className="cafe-item-desc">{item.description}</p>
+
+              <div className="cafe-item-footer">
+                <span className="cafe-format-tag">
+                  {item.variants[0]?.label || "Artisan Serve"}
+                </span>
+                <span className="cafe-arrow-link" aria-hidden="true">
+                  <ArrowRight size={14} />
+                </span>
+              </div>
             </div>
           </div>
         ))}

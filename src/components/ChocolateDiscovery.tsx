@@ -126,8 +126,8 @@ export const ChocolateDiscovery: React.FC<ChocolateDiscoveryProps> = ({
     mm.add("(min-width: 768px)", () => {
       const st = ScrollTrigger.create({
         trigger: section,
-        start: "top 72px",
-        end: "+=1800",
+        start: "top top",
+        end: "+=1600",
         pin: true,
         pinSpacing: true,
         scrub: 0.6,
@@ -154,7 +154,7 @@ export const ChocolateDiscovery: React.FC<ChocolateDiscoveryProps> = ({
       // On mobile, pin for a restrained distance to allow smooth rotation without trapping
       const st = ScrollTrigger.create({
         trigger: section,
-        start: "top 64px",
+        start: "top top",
         end: "+=1300",
         pin: true,
         pinSpacing: true,
@@ -193,8 +193,8 @@ export const ChocolateDiscovery: React.FC<ChocolateDiscoveryProps> = ({
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!isDragging) return;
     const deltaX = e.clientX - dragStartX.current;
-    // Map ~220px drag to 1 card
-    const sensitivity = 1 / 220;
+    // Map ~260px drag to 1 card
+    const sensitivity = 1 / 260;
     const newPos = Math.min(
       Math.max(0, dragStartPos.current - deltaX * sensitivity),
       count - 1
@@ -327,7 +327,7 @@ export const ChocolateDiscovery: React.FC<ChocolateDiscoveryProps> = ({
                 // Active card (offset = 0) is front and center (scale 1, zIndex 30)
                 // Responsive translation step (desktop vs mobile)
                 const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-                const baseStep = isMobile ? 185 : 305;
+                const baseStep = isMobile ? 210 : 345;
                 const xTrans = offset * baseStep;
 
                 // Parabolic depth recession (translateZ)
