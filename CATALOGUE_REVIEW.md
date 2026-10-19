@@ -1,4 +1,4 @@
-# Cocoa Atelier — Catalogue Normalization & Review Report
+# TR Homemade Chocolates — Catalogue Normalization & Review Report
 
 ## Executive Summary
 This report documents the end-to-end normalization, deduplication, collision resolution, and audit rules applied to the product dataset extracted from the supplier export.
@@ -14,7 +14,7 @@ The source export comprised unaligned tabular records where numerical fields (pu
 | **Volume Units** | `Ghee - 400 ml` | Standardized to `400 ml` (`volumeMl: 400`). | Distinguishes volumetric liquid measures from dry weights. |
 | **Day & Night Inversion** | `Basic - Day & Night` (250g, 500g, 750g) vs `Day & Night – Basic 1kg` | Consolidated all 4 sizes under the canonical family `Day & Night — Basic`. | Eliminates fragmented family cards and groups all four confirmed variants into one card. |
 | **Punctuation & Hyphens** | Inconsistent en-dashes (`–`), hyphens (`-`), and spaces | Standardized to clean en-dashes (`—`) with uniform spacing across titles. | Enhances editorial visual elegance. |
-| **Title Casing** | `Roasted Cashew white 1kg` | Normalized to `Roasted Cashew White`. | Preserves product identity while adhering to luxury atelier casing standards. |
+| **Title Casing** | `Roasted Cashew white 1kg` | Normalized to `Roasted Cashew White`. | Preserves product identity while adhering to TR Homemade Chocolates casing standards. |
 
 ---
 
