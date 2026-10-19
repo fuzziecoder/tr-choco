@@ -86,31 +86,39 @@ export const productImages: Record<string, string | null> = {
   "choco-lollipop": null,
 
   // Cakes & Bakery
-  "brownie-with-chocolate": null,
+  "brownie-with-chocolate": "/images/products/brownie-with-chocolate.webp",
   "red-velvet": null,
   "chocolate-bun": null,
 
   // Tea & Coffee
-  "tea": "/images/products/tea-kodai-special.jpg",
+  "tea": "/images/products/tea.webp",
   "tea-kodai-special": "/images/products/tea-kodai-special.jpg",
   "tea-masala": "/images/products/tea-masala.jpg",
   "tea-lemon": "/images/products/tea-lemon.jpg",
   "tea-cardamom": "/images/products/tea-cardamom.jpg",
-  "coffee": null,
+  "coffee": "/images/products/coffee.webp",
   "herbal-tea-all-varieties": "/images/products/herbal-tea-all-varieties.webp",
   "blue-tea": null,
   "tea-varieties": "/images/products/tea-varieties.webp",
   "ginger-tea": "/images/products/ginger-tea.webp",
   "instant-filter-coffee": null,
-  "hot-chocolate-coffee": null,
+  "hot-chocolate-coffee": "/images/products/hot-chocolate-coffee.webp",
   "drinking-chocolate": null,
   "green-tea": "/images/products/green-tea.jpg",
 
   // Café Food & Drinks
   "egg-puffs": null,
   "veg-puffs": null,
-  "avocado-sandwich": null,
-  "avocado-milkshake": null,
+  "avocado-sandwich": "/images/products/avocado-sandwich.webp",
+  "avocado-milkshake": "/images/products/avocado-milkshake.webp",
+  "brownie-tub": "/images/products/brownie-tub.webp",
+  "mini-cookies-dip": "/images/products/mini-cookies-dip.webp",
+  "donut": "/images/products/donut.webp",
+  "veg-sandwich": "/images/products/veg-sandwich.webp",
+  "chocolate-sandwich": "/images/products/chocolate-sandwich.webp",
+  "masala-sweetcorn": "/images/products/masala-sweetcorn.webp",
+  "sweetcorn": "/images/products/sweetcorn.webp",
+  "cold-chocolate-coffee": "/images/products/cold-chocolate-coffee.webp",
 
   // Pantry
   "ghee-400ml": "/images/finds/pantry-ghee-honey.jpg",
