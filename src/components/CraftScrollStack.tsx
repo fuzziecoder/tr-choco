@@ -49,6 +49,7 @@ export const CraftScrollStack: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const stackStageRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
 
   useEffect(() => {
@@ -155,9 +156,14 @@ export const CraftScrollStack: React.FC = () => {
           1
         );
 
+      // Settling buffer: Chapter 03 stays completely visible and readable before unpinning
+      tl.to({}, { duration: 0.7 });
+
+      timelineRef.current = tl;
+
       const trigger = ScrollTrigger.create({
         trigger: sectionRef.current,
-        start: "top 72px",
+        start: "top top",
         end: "+=1100",
         pin: true,
         pinSpacing: true,
@@ -170,6 +176,7 @@ export const CraftScrollStack: React.FC = () => {
       return () => {
         trigger.kill();
         tl.kill();
+        timelineRef.current = null;
       };
     });
 
@@ -269,13 +276,10 @@ export const CraftScrollStack: React.FC = () => {
 
       const trigger = ScrollTrigger.create({
         trigger: stackStageRef.current,
-        start: "center center",
-        end: "+=800",
-        pin: true,
-        pinSpacing: true,
-        scrub: 0.6,
+        start: "top 75%",
+        end: "bottom 25%",
+        scrub: 0.8,
         animation: tl,
-        anticipatePin: 1,
         invalidateOnRefresh: true,
       });
 
@@ -290,6 +294,9 @@ export const CraftScrollStack: React.FC = () => {
 
   const handleSelectCard = (index: number) => {
     setActiveCardIndex(index);
+    if (timelineRef.current) {
+      timelineRef.current.tweenTo(index, { duration: 0.5, ease: "power2.out" });
+    }
     const cardEl = cardsRef.current[index];
     if (cardEl && window.innerWidth <= 991) {
       cardEl.scrollIntoView({ behavior: "smooth", block: "nearest" });

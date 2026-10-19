@@ -25,9 +25,6 @@ export const Header: React.FC = () => {
 
   return (
     <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
-      {/* Melted Chocolate Drip Top Blend */}
-      <div className="header-chocolate-drip" aria-hidden="true" />
-
       <div className="header-inner">
         {/* Brand Mark with Authentic TR Emblem */}
         <a href="#hero" className="brand-logo" aria-label={`${siteConfig.brandName} Home`}>
