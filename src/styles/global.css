@@ -1121,6 +1121,7 @@ img {
   max-width: 320px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -1681,6 +1682,7 @@ img {
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -3392,6 +3394,7 @@ img {
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -3730,7 +3733,6 @@ img {
   height: auto;
   object-fit: contain;
   display: block;
-  vertical-align: bottom;
   margin-bottom: 0;
   pointer-events: none;
   user-select: none;
