@@ -45,7 +45,7 @@ export const products: CatalogueProduct[] = [
     variants: createFamilyVariants("white-crunchy", "White Crunchy", "WCHY"),
     featured: true,
     needsReview: false,
-    editorialBadge: "Atelier Signature",
+    editorialBadge: "TR Signature",
     palette: { bg: "#FFF9EB", border: "#F6E7B9", accent: "#73564B" },
   },
   {
@@ -1029,7 +1029,7 @@ export const products: CatalogueProduct[] = [
     featured: true,
     needsReview: true,
     reviewNotes: ["Preserved exactly as 'Red Velvet'. Format (slice vs whole cake) unstated in export."],
-    editorialBadge: "Atelier Bake",
+    editorialBadge: "TR Bake",
     palette: { bg: "#FFF2F4", border: "#FCD0D7", accent: "#46312D" },
   },
   {

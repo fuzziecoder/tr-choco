@@ -47,7 +47,7 @@ export const Footer: React.FC = () => {
       </section>
 
       {/* ============================================================
-          COMPACT ATELIER FOOTER
+          COMPACT TR HOMEMADE CHOCOLATES FOOTER
           ============================================================ */}
       <footer className="site-footer">
         <div className="footer-top">

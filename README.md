@@ -1,4 +1,4 @@
-# Cocoa Atelier — Showcase Website
+# TR Homemade Chocolates — Showcase Website
 
 An editorial, luxury-inspired chocolate and café showcase website built with **React**, **TypeScript**, and **Vite**, featuring interactive components adapted from modern web design patterns and the **React Bits** catalog.
 
@@ -30,7 +30,7 @@ npm run preview
 The design recreates the aesthetic of the reference visual:
 - **Outer Shell & Ambient Glow**: A rich, deep pink-to-dark-cocoa radial background (`#4a2d36` to `#1a0e13`).
 - **Centered Warm-White Page Shell**: Max-width container (`#fffefa`) with generously rounded outer corners (`border-radius: 36px`), clean borders, and soft elevation.
-- **Header**: Compact header with a cursive script brand mark ("Cocoa Atelier"), 5 understated navigation links ("Home", "Collections", "Café & Drinks", "Our Story", "Visit Us"), and a dark cocoa specular pill button ("Explore the Collection").
+- **Header**: Compact header with a brand mark ("TR Homemade Chocolates"), 5 understated navigation links ("Home", "Collections", "Café & Drinks", "Our Story", "Visit Us"), and a dark cocoa specular pill button ("Explore the Collection").
 - **Hero Card**: Cream-to-blush horizontal gradient (`#fff3cc` to `#efbaca`), large dark typography with serif styling, high-fidelity 3D celebration cake centerpiece on a fluted pink pedestal, floating pastel macarons, and animated golden pearl orbs.
 - **Asymmetric Bento Vitrine**: A 3-column asymmetric bento layout immediately after the hero featuring lavender, pale sage, butter cream, and blush panels:
   - Floating strawberry macaron card
@@ -134,7 +134,7 @@ When selling prices are officially confirmed:
 ## How to Update Brand & Business Information
 
 Open `src/data/siteConfig.ts` to edit:
-- Brand name (default: *"Cocoa Atelier"*)
+- Brand name (default: *"TR Homemade Chocolates"*)
 - Taglines and hero copy
 - Navigation links and destinations
 - Visit Us boutique hours and address notes
