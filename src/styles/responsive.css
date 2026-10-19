@@ -435,15 +435,34 @@
   .footer-top {
     grid-template-columns: 1fr;
     gap: 28px;
+    min-height: auto;
+    padding-bottom: 24px;
+  }
+
+  .footer-right-col {
+    align-items: center;
+    gap: 20px;
   }
 
   .footer-back-to-top {
     justify-content: flex-start;
   }
 
+  .footer-art-wrapper {
+    justify-content: center;
+  }
+
+  .footer-art-img {
+    max-width: 380px;
+  }
+
   .footer-bottom {
     flex-direction: column;
     gap: 8px;
+    text-align: center;
+  }
+
+  .footer-disclaimer {
     text-align: center;
   }
 }
