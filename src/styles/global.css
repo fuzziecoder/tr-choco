@@ -20,6 +20,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
 
 body {
@@ -358,6 +359,10 @@ img {
   color: var(--dark-cocoa);
   align-items: center;
   justify-content: center;
+}
+
+.mobile-quick-nav {
+  display: none;
 }
 
 /* Mobile Drawer */

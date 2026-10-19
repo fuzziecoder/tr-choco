@@ -97,6 +97,25 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
+      {/* Mobile Horizontal Quick Navigation Bar (Always visible on mobile view) */}
+      <nav className="mobile-quick-nav" aria-label="Mobile Quick Navigation">
+        <div className="mobile-quick-nav-track">
+          {siteConfig.navigation.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="mobile-quick-nav-pill"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(item.href);
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
