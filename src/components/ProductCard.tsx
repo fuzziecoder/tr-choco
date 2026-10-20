@@ -79,16 +79,30 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
           {/* Confirmed Sizes or Price */}
           {hasVariants ? (
             <div className="card-sizes-pills">
-              {product.variants.slice(0, 3).map((v) => (
-                <span key={v.id} className="size-chip">
-                  {v.label}
+              {/* Desktop view: up to 3 chips + more */}
+              <div className="card-sizes-desktop">
+                {product.variants.slice(0, 3).map((v) => (
+                  <span key={v.id} className="size-chip">
+                    {v.label}
+                  </span>
+                ))}
+                {product.variants.length > 3 && (
+                  <span className="size-chip size-chip-more">
+                    +{product.variants.length - 3}
+                  </span>
+                )}
+              </div>
+              {/* Mobile view: concise 1-line chip badge */}
+              <div className="card-sizes-mobile">
+                <span className="size-chip size-chip-primary">
+                  {product.variants[0].label}
                 </span>
-              ))}
-              {product.variants.length > 3 && (
-                <span className="size-chip size-chip-more">
-                  +{product.variants.length - 3}
-                </span>
-              )}
+                {product.variants.length > 1 && (
+                  <span className="size-chip size-chip-more">
+                    +{product.variants.length - 1}
+                  </span>
+                )}
+              </div>
             </div>
           ) : product.variants[0]?.sellingPrice ? (
             <span className="card-price-chip">₹{product.variants[0].sellingPrice}</span>
