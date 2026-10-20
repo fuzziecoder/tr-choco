@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="aura-footer-section" aria-labelledby="footer-heading">
+    <footer id="visit" className="aura-footer-section" aria-labelledby="footer-heading">
       {/* Outer White Card Shell (matching Image 2) */}
       <div className="aura-footer-card">
 
