@@ -17,7 +17,7 @@ export const categories: Category[] = [
     id: "cakes-bakery",
     label: "Cakes & Bakery",
     shortLabel: "Bakery",
-    description: "Rich chocolate brownies, red velvet bakes, and fresh chocolate buns."
+    description: "Rich chocolate brownies, artisan pastries, and fresh chocolate buns."
   },
   {
     id: "tea-coffee",

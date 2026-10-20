@@ -51,7 +51,7 @@ export const catalogueReviewReport: NormalizationRecord[] = [
   },
   {
     category: "identity-question",
-    item: "Dama Fruit & Nut & Nice Pista",
+    item: "Nice Pista",
     sourceObservation: "Uncommon nomenclature in source export without chocolate base definition.",
     resolution: "Preserved exact supplier wording. No assumption made regarding white, milk, or dark base; placed in Flavours & Favourites.",
     auditImpact: "Honest catalogue representation without fabricated attributes."
@@ -72,9 +72,9 @@ export const catalogueReviewReport: NormalizationRecord[] = [
   },
   {
     category: "identity-question",
-    item: "Cherry / Cherry with Chocolate / White Cherry Top",
-    sourceObservation: "Four distinct cherry-related entries across confectionery and chocolate sections.",
-    resolution: "Preserved all four as completely separate listings without conflation.",
+    item: "Cherry with Chocolate",
+    sourceObservation: "Artisanal glazed cherry confectionery preserved as a distinct listing.",
+    resolution: "Preserved as an independent listing without conflation.",
     auditImpact: "Accurate representation of diverse confectionery forms."
   },
   {

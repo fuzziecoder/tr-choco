@@ -167,7 +167,7 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
             </div>
             <div className="bento-overlay-caption">
               <span className="caption-tag">Signature Cascade</span>
-              <p className="caption-sub">Hazelnut • Truffles • Ganache</p>
+              <p className="caption-sub">Roasted Almonds • Truffles • Ganache</p>
             </div>
           </div>
 
@@ -237,28 +237,28 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({
       </div>
 
       {/* ============================================================
-          ROW 4: Bottom Pair (Red Velvet & Purple Truffle + Lavender Hamper)
+          ROW 4: Bottom Pair (Artisan Bakes & Purple Truffle + Lavender Hamper)
           ============================================================ */}
       <div className="bento-bottom-row">
-        {/* Left: Red Velvet & Purple Confection */}
+        {/* Left: Artisan Bakes & Purple Confection */}
         <div
           className="bento-card card-bottom-split card-sage-light"
           role="button"
           tabIndex={0}
-          onClick={() => onSelectProduct("red-velvet")}
-          onKeyDown={(e) => e.key === "Enter" && onSelectProduct("red-velvet")}
-          aria-label="View Red Velvet Bake Details"
+          onClick={() => onSelectProduct("chocolate-bun")}
+          onKeyDown={(e) => e.key === "Enter" && onSelectProduct("chocolate-bun")}
+          aria-label="View Chocolate Bun Bake Details"
         >
           <div className="bento-image-container">
             <img
               src={heroImages.redVelvetTruffle}
-              alt="Slice of deep red velvet cake beside a lavender purple truffle"
+              alt="Slice of artisan baked cake beside a lavender purple truffle"
               className="bento-image"
               loading="lazy"
             />
           </div>
           <div className="bento-overlay-caption">
-            <span className="caption-tag">Red Velvet & Praline</span>
+            <span className="caption-tag">Artisan Bakes & Praline</span>
           </div>
         </div>
 

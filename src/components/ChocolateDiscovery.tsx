@@ -23,21 +23,44 @@ interface ChocolateDiscoveryProps {
 export const ChocolateDiscovery: React.FC<ChocolateDiscoveryProps> = ({
   onSelectProduct,
 }) => {
-  // Curated set of 16 products across chocolate creations, bakery, and café
-  const discoveryItems = useMemo(
-    () =>
-      products
-        .filter(
-          (p) =>
-            p.featured ||
-            p.editorialBadge ||
-            p.categoryId === "chocolates" ||
-            p.categoryId === "cakes-bakery" ||
-            p.categoryId === "tea-coffee"
-        )
-        .slice(0, 16),
-    []
-  );
+  // Curated set of 16 products across chocolate creations, confectionery, bakery, and café
+  const discoveryItems = useMemo(() => {
+    const prioritySlugs = [
+      "white-strawberry",
+      "chocolate-beans-bottle",
+      "strawberry-truffle",
+      "chocolate-bun",
+      "glucose-candy",
+      "cherry-with-chocolate",
+      "white-orange",
+      "dark-black-currant",
+      "milk-green-apple",
+      "white-crunchy",
+      "day-night-basic",
+      "coconut-truffle",
+      "mango-truffle",
+      "brownie-tub",
+      "tea-varieties",
+      "cold-chocolate-coffee",
+    ];
+
+    const prioritized = prioritySlugs
+      .map((slug) => products.find((p) => p.slug === slug))
+      .filter((p): p is (typeof products)[0] => Boolean(p));
+
+    const remaining = products.filter(
+      (p) =>
+        !prioritySlugs.includes(p.slug) &&
+        (p.featured ||
+          p.editorialBadge ||
+          p.categoryId === "chocolates" ||
+          p.categoryId === "cakes-bakery" ||
+          p.categoryId === "tea-coffee" ||
+          p.categoryId === "confectionery")
+    );
+
+    return [...prioritized, ...remaining].slice(0, 16);
+  }, []);
 
   const count = discoveryItems.length;
 

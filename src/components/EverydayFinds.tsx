@@ -69,19 +69,19 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
             </div>
           </div>
 
-          {/* Card 2: Bottom Left - Botanical Oils */}
+          {/* Card 2: Bottom Left - Botanical Radiance */}
           <div
             className="bento-find-card bento-card-oils"
             role="button"
             tabIndex={0}
-            onClick={() => onSelectProduct("vetiver-oil")}
-            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelectProduct("vetiver-oil")}
-            aria-label="Explore Grounding Aromas and Botanical Oils"
+            onClick={() => onSelectProduct("kasturi-manjal")}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelectProduct("kasturi-manjal")}
+            aria-label="Explore Pure Herbal Radiance and Wild Kasturi Manjal"
           >
             <div className="bento-card-bg-wrap">
               <img
                 src={findsBentoImages.oils}
-                alt="Botanical Oils and Extracts"
+                alt="Wild Kasturi Manjal & Herbal Extracts"
                 className="bento-card-img bento-card-img-right"
                 loading="lazy"
                 decoding="async"
@@ -90,10 +90,10 @@ export const EverydayFinds: React.FC<EverydayFindsProps> = ({ onSelectProduct })
               />
             </div>
             <div className="bento-card-content">
-              <span className="bento-meta-text">5 Products · Distilled Extracts</span>
-              <div className="bento-pill-tag dark">Botanical Oils</div>
+              <span className="bento-meta-text">Herbal Care · Traditional Botanicals</span>
+              <div className="bento-pill-tag dark">Botanical Care</div>
               <h3 className="bento-card-title dark-text">
-                Grounding Aromas: Distilled Vetiver, Citronella &amp; Facial Oils
+                Authentic Herbal Radiance: Pure Wild Kasturi Manjal &amp; Rosewater Care
               </h3>
             </div>
           </div>

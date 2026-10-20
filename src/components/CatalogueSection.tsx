@@ -58,9 +58,9 @@ const CATEGORY_CARDS: CategoryCardDefinition[] = [
     id: "confectionery",
     name: "Confectionery",
     theme: "peach",
-    image: "/images/hero/bento_redvelvet_truffle.jpg",
-    alt: "Sweets and Confectionery Treats",
-    subtitle: "Chocolate beans, dragees & sweet treats",
+    image: "/images/products/glucose-candy.webp",
+    alt: "Glucose Candy and Confectionery Treats",
+    subtitle: "Glucose candies, cherries with chocolate & sweets",
   },
   {
     id: "cakes-bakery",
@@ -68,7 +68,7 @@ const CATEGORY_CARDS: CategoryCardDefinition[] = [
     theme: "rose",
     image: "/images/hero/bento_sponge_slice.jpg",
     alt: "Fresh Bakes and Cakes",
-    subtitle: "Chocolate brownies, red velvet & bakes",
+    subtitle: "Chocolate brownies, chocolate buns & bakes",
   },
   {
     id: "tea-coffee",
