@@ -103,7 +103,7 @@ export const Footer: React.FC = () => {
             </div>
             <div className="aura-info-item">
               <Clock size={14} className="aura-info-icon" />
-              <span>Boutique Hours: Mon – Sun, 9:00 AM – 10:00 PM</span>
+              <span>Boutique Hours: Mon – Sun, 10:00 AM – 11:00 PM</span>
             </div>
           </div>
 
