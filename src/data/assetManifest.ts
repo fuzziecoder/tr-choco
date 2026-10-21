@@ -109,8 +109,8 @@ export const productImages: Record<string, string | null> = {
   "cold-chocolate-coffee": "/images/products/cold-chocolate-coffee.webp",
 
   // Pantry
-  "ghee-400ml": "/images/finds/pantry-ghee-honey.jpg",
-  "honey": "/images/finds/pantry-ghee-honey.jpg",
+  "ghee-400ml": "/images/finds/ghee-400ml.jpg",
+  "honey": "/images/finds/honey-jar.jpg",
 
   // Personal Care & Botanicals
   "aloe-vera-gel": "/images/products/aloe-vera-face-gel.webp",
