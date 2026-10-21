@@ -24,7 +24,7 @@ export const collectionImages: Record<string, string> = {
 };
 
 export const findsBentoImages = {
-  pantry: "/images/finds/pantry-ghee-honey.jpg",
+  pantry: "/images/finds/ghee-400ml.jpg",
   oils: "/images/finds/botanical-oils.jpg",
   ritualCenter: "/images/finds/botanical-ritual-center.jpg",
   aloeJar: "/images/finds/aloe-skincare-jar.jpg",
@@ -176,6 +176,10 @@ export const productGalleries: Record<string, string[]> = {
   "glucose-candy": ["/images/products/glucose-candy.webp"],
   "chocolate-bun": ["/images/products/chocolate-bun.webp"],
   "stuffed-cookies-chocolate": ["/images/products/day-night-filling.webp"],
+
+  // Pantry
+  "ghee-400ml": ["/images/finds/ghee-400ml.jpg"],
+  "honey": ["/images/finds/honey-jar.jpg"],
 
   // Teas & Coffees
   "tea": [
